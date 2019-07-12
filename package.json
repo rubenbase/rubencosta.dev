@@ -1,21 +1,27 @@
 {
     "name": "rubencosta.dev",
-    "version": "1.0.0",
     "description": "Personal website",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/rubenbase/rubencosta.dev.git"
-    },
     "author": "Ruben Costa",
+    "version": "1.0.0",
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/rubenbase/rubencosta.dev/issues"
-    },
     "homepage": "https://github.com/rubenbase/rubencosta.dev#readme",
+    "main": "index.js",
+    "private": true,
+    "workspaces": [
+        "packages/common",
+        "packages/landing",
+        "packages/reusecore"
+    ],
+    "scripts": {
+        "clean": "lerna clean --yes && rimraf node_modules",
+        "start": "lerna run --parallel dev",
+        "web": "yarn workspace next-landing run dev",
+        "landing-build": "rimraf dist && yarn workspace next-landing run build",
+        "landing-start": "yarn workspace next-landing run start",
+        "prebuild-public": "rimraf \"dist/functions/**\" && rimraf \"dist/public\"",
+        "build-public": "cpx \"packages/common/src/assets/**/*.*\" \"dist/public/static\" -C && cpx \"public/**/*.*\" \"dist/public\" -C",
+        "netlify-deploy": "yarn workspace next-landing run netlify-build"
+    },
     "devDependencies": {
         "@babel/cli": "^7.5.0",
         "cpx": "^1.5.0",
@@ -25,6 +31,13 @@
         "lint-staged": "^9.2.0",
         "prettier": "^1.18.2",
         "rimraf": "^2.6.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rubenbase/rubencosta.dev.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rubenbase/rubencosta.dev/issues"
     },
     "husky": {
         "hooks": {
