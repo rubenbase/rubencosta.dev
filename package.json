@@ -1,0 +1,40 @@
+{
+    "name": "rubencosta.dev",
+    "version": "1.0.0",
+    "description": "Personal website",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rubenbase/rubencosta.dev.git"
+    },
+    "author": "Ruben Costa",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/rubenbase/rubencosta.dev/issues"
+    },
+    "homepage": "https://github.com/rubenbase/rubencosta.dev#readme",
+    "devDependencies": {
+        "@babel/cli": "^7.5.0",
+        "cpx": "^1.5.0",
+        "cross-env": "^5.2.0",
+        "husky": "^3.0.0",
+        "lerna": "^3.15.0",
+        "lint-staged": "^9.2.0",
+        "prettier": "^1.18.2",
+        "rimraf": "^2.6.3"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,md,css}": [
+            "prettier --trailing-comma es5 --single-quote --write",
+            "git add"
+        ]
+    }
+}
