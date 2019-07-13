@@ -16,7 +16,7 @@
         "clean": "lerna clean --yes && rimraf node_modules",
         "start": "lerna run --parallel dev",
         "web": "yarn workspace next-landing run dev",
-        "test": "echo 'Testing the Tests ********'",
+        "test": "echo 'Testing the CI/CD ********'",
         "landing-build": "rimraf dist && yarn workspace next-landing run build",
         "landing-start": "yarn workspace next-landing run start",
         "prebuild-public": "rimraf \"dist/functions/**\" && rimraf \"dist/public\"",
