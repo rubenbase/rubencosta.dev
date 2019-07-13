@@ -1,4 +1,4 @@
-# Environment Configuration
+# Environment Configuration.
 language: node_js
 node_js: node
 dist: xenial
