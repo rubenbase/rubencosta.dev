@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# die on error
+set -e
+
+echo 'Retrieving latest deploy...'
+echo '1'
+echo $NETLIFY_PUBLISH_KEY
+echo '2'
+
+printenv
+
+url=`curl -H "Authorization: Bearer $NETLIFY_PUBLISH_KEY" https://api.netlify.com/api/v1/sites/jolly-colden-d5f654.netlify.com/deploys`
+temp=`echo $url | sed 's/\\\\\//\//g' | sed 's/[{}]//g' | awk -v k="text" '{n=split($0,a,","); for (i=1; i<=n; i++) print a[i]}' | sed 's/\"\:\"/\|/g' | sed 's/[\,]/ /g' | sed 's/\"//g' | grep -w -m 1 'id'`
+
+# https://www.netlify.com/docs/api/#deploys
+echo "Publishing build ${temp##*|}..."
+curl -X POST -H "Authorization: Bearer $NETLIFY_PUBLISH_KEY" -d "{}" "https://api.netlify.com/api/v1/sites/jolly-colden-d5f654.netlify.com/deploys/${temp##*|}/restore"
+
+# https://open-api.netlify.com/#/default/lockDeploy
+echo "Locking deploy to ${temp##*|}..."
+curl -X POST -H "Authorization: Bearer $NETLIFY_PUBLISH_KEY" -d "{}" "https://api.netlify.com/api/v1/deploys/${temp##*|}/lock"
