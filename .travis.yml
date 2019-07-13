@@ -1,4 +1,10 @@
+# Environment Configuration
 language: node_js
 node_js: node
 dist: xenial
 sudo: false
+
+# Starts Continous Deployment Pipeline.
+after_success:
+    - chmod +x ./netlify-publish.sh
+    - ./netlify-publish.sh
