@@ -3,10 +3,11 @@
 # die on error
 set -e
 
+echo '0000000000'
 echo 'Retrieving latest deploy...'
-echo '1'
+echo '11111111111'
 echo $NETLIFY_PUBLISH_KEY
-echo '2'
+echo '22222222222'
 
 printenv
 
