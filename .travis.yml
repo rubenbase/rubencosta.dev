@@ -6,5 +6,5 @@ sudo: false
 
 # Starts Continous Deployment Pipeline.
 after_success:
-    - chmod +x ./netlify-publish_.sh
-    - ./netlify-publish_.sh
+    - chmod +x ./netlify-publish.sh
+    - ./netlify-publish.sh

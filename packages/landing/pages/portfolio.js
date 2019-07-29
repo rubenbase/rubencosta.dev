@@ -1,12 +1,15 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
+import { ThemeProvider } from 'styled-components';
+// import Sticky from "react-stickynode";
+// import { DrawerProvider } from "common/src/contexts/DrawerContext";
 // import { ResetCSS } from "common/src/assets/css/style";
 
 export default () => {
   return (
     <Fragment>
       <Head>
-        <title>Ruben Costa</title>
+        <title>Portfolio | A react next landing page</title>
         <meta name="Description" content="React next landing page" />
         <meta name="theme-color" content="#ec5555" />
         {/* Load google fonts */}
@@ -17,7 +20,6 @@ export default () => {
       </Head>
 
       {/* <ResetCSS /> */}
-      <h3>test</h3>
     </Fragment>
   );
 };

@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 
 # die on error
@@ -10,3 +11,7 @@ temp=`echo $url | sed 's/\\\\\//\//g' | sed 's/[{}]//g' | awk -v k="text" '{n=sp
 # https://www.netlify.com/docs/api/#deploys
 echo "Publishing build ${temp##*|}..."
 curl -X POST -H "Authorization: Bearer $NETLIFY_PUBLISH_KEY" -d "{}" "https://api.netlify.com/api/v1/sites/jolly-colden-d5f654.netlify.com/deploys/${temp##*|}/restore"
+
+# https://open-api.netlify.com/#/default/lockDeploy
+echo "Locking deploy to ${temp##*|}..."
+curl -X POST -H "Authorization: Bearer $NETLIFY_PUBLISH_KEY" -d "{}" "https://api.netlify.com/api/v1/deploys/${temp##*|}/lock"

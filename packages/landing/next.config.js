@@ -3,25 +3,30 @@ const withTM = require('next-transpile-modules');
 const withOptimizedImages = require('next-optimized-images');
 const withFonts = require('next-fonts');
 const withCSS = require('@zeit/next-css');
-module.exports = withPlugins([
+module.exports = withPlugins(
   [
-    withTM,
-    {
-      transpileModules: ['reusecore', 'common'],
-    },
-  ],
-  [
-    withOptimizedImages,
-    {
-      mozjpeg: {
-        quality: 90,
+    [
+      withTM,
+      {
+        transpileModules: ['reusecore', 'common'],
       },
-      webp: {
-        preset: 'default',
-        quality: 90,
+    ],
+    [
+      withOptimizedImages,
+      {
+        mozjpeg: {
+          quality: 90,
+        },
+        webp: {
+          preset: 'default',
+          quality: 90,
+        },
       },
-    },
+    ],
+    withFonts,
+    withCSS,
   ],
-  withFonts,
-  withCSS,
-]);
+  {
+    distDir: '../../dist/functions/next',
+  }
+);
