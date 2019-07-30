@@ -1,9 +1,9 @@
 {
     "name": "rubencosta.dev",
-    "description": "Modern Multipurpose Landing Pages Template Using React, Next, Styled Components and so on. It also support Gatsby Static site generator ",
+    "description": "Personal website",
     "version": "3.0.1",
     "private": true,
-    "author": "RedQ Team",
+    "author": "Ruben Costa",
     "license": "",
     "repository": {
         "type": "git",
