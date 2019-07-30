@@ -31,6 +31,7 @@
         "gatsby-build": "yarn workspace gatsby-landing run build",
         "gatsby-serve": "yarn workspace gatsby-landing run serve",
         "start": "lerna run --parallel dev",
+        "test": "echo testing",
         "preweb": "cpx \"packages/common/src/assets/image/**/*.*\" \"packages/landing/static\" -C",
         "web": "yarn workspace next-landing run dev",
         "landing-build": "rimraf dist && yarn workspace next-landing run build",
