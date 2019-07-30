@@ -1,15 +1,14 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ErrorWrapper = styled.div`
-  padding: 80px 15px;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background: oldlace;
+    padding: 80px 15px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
 `;
 
 export const ErrorContent = styled.div`
-  width: 450px;
-  max-width: 100%;
-  margin: 0 auto;
+    width: 450px;
+    max-width: 100%;
+    margin: 0 auto;
 `;
