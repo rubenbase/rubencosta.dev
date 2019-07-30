@@ -27,6 +27,7 @@
     ],
     "scripts": {
         "clean": "lerna clean --yes && rimraf node_modules",
+        "commit": "yarn prebuild-public && git add . && git commit",
         "gatsby-dev": "yarn workspace gatsby-landing run dev",
         "gatsby-build": "yarn workspace gatsby-landing run build",
         "gatsby-serve": "yarn workspace gatsby-landing run serve",
