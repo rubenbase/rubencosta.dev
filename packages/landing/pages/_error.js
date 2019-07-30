@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-// import ErrorSec from '../containers/Error';
+import Error404 from '../containers/Error';
 // import { ResetCSS } from "common/src/assets/css/style";
 
 class Error extends React.Component {
@@ -22,9 +22,11 @@ class Error extends React.Component {
         </Head>
         {/* <ResetCSS /> */}
         <div>
-          {this.props.statusCode
-            ? `An error ${this.props.statusCode} occurred on server`
-            : null}
+          {this.props.statusCode ? (
+            `An error ${this.props.statusCode} occurred on server`
+          ) : (
+            <Error404 />
+          )}
         </div>
       </>
     );
