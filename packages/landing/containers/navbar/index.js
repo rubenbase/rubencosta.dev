@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import NavbarWrapper from "reusecore/src/elements/Navbar";
-import Box from "reusecore/src/elements/Box";
+import NavbarWrapper from "reusecore/src/elements/navbar";
+import Box from "reusecore/src/elements/box";
+import Button from "reusecore/src/elements/button";
+
 import Container from "common/src/components/ui/container";
+import ScrollSpyMenu from "common/src/components/scrollSpyMenu";
+import { MENU_ITEMS } from "common/src/data/";
 
 const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
     return (
@@ -13,8 +17,21 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
                 <Box {...row}>
                     <h3>Logo</h3>
                     <Box {...menuWrapper}>
-                        <div>Link 1</div>
-                        <div>Link 2</div>
+                        <ScrollSpyMenu
+                            className="main_menu"
+                            menuItems={MENU_ITEMS}
+                            offset={-70}
+                        />
+                        <Link href="#">
+                            <a className="navbar_button">
+                                <Button {...button} title="LET'S TALK" />
+                            </a>
+                        </Link>
+                        <Link href="#">
+                            <a className="navbar_button">
+                                <Button {...button} title="LET'S TALK" />
+                            </a>
+                        </Link>
                     </Box>
                 </Box>
             </Container>
