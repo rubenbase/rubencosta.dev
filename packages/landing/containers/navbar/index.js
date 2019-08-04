@@ -7,6 +7,7 @@ import NavbarWrapper from "reusecore/src/elements/Navbar";
 const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
     return (
         <NavbarWrapper {...navbarStyle} className="portfolio_navbar">
+            <Container noGutter mobileGutter width="1200px"></Container>
             <div>menu</div>
         </NavbarWrapper>
     );

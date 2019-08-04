@@ -18,7 +18,9 @@ export default () => {
             </Head>
 
             {/* <ResetCSS /> */}
-            <Navbar />
+            <Navbar>
+                <h2>Test</h2>
+            </Navbar>
         </Fragment>
     );
 };
