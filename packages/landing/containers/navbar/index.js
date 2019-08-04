@@ -3,12 +3,21 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 
 import NavbarWrapper from "reusecore/src/elements/Navbar";
+import Box from "reusecore/src/elements/Box";
+import Container from "common/src/components/ui/container";
 
 const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
     return (
         <NavbarWrapper {...navbarStyle} className="portfolio_navbar">
-            <Container noGutter mobileGutter width="1200px"></Container>
-            <div>menu</div>
+            <Container noGutter mobileGutter width="1200px">
+                <Box {...row}>
+                    <h3>Logo</h3>
+                    <Box {...menuWrapper}>
+                        <div>Link 1</div>
+                        <div>Link 2</div>
+                    </Box>
+                </Box>
+            </Container>
         </NavbarWrapper>
     );
 };
