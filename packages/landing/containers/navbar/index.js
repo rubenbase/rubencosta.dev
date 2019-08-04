@@ -2,8 +2,14 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
+import NavbarWrapper from "reusecore/src/elements/Navbar";
+
 const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
-    return <div></div>;
+    return (
+        <NavbarWrapper {...navbarStyle} className="portfolio_navbar">
+            <div>menu</div>
+        </NavbarWrapper>
+    );
 };
 
 Navbar.propTypes = {
