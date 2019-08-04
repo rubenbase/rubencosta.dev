@@ -3,6 +3,8 @@ import Head from "next/head";
 import Navbar from "../containers/navbar";
 // import { ResetCSS } from "common/src/assets/css/style";
 
+import { DrawerProvider } from "common/src/contexts/drawer-context";
+
 export default () => {
     return (
         <Fragment>
@@ -18,9 +20,9 @@ export default () => {
             </Head>
 
             {/* <ResetCSS /> */}
-            <Navbar>
-                <h2>Test</h2>
-            </Navbar>
+            <DrawerProvider>
+                <Navbar />
+            </DrawerProvider>
         </Fragment>
     );
 };

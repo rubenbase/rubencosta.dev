@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Scrollspy from "react-scrollspy";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-import { DrawerContext } from "../../contexts/DrawerContext";
+import { DrawerContext } from "../../contexts/drawer-context";
 
 const ScrollSpyMenu = ({ className, menuItems, drawerClose, ...props }) => {
     const { dispatch } = useContext(DrawerContext);
