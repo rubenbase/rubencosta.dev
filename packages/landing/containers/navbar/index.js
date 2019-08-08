@@ -36,7 +36,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
                         />
                         <Link href="#">
                             <a className="navbar_button">
-                                <Button {...button} title="LET'S TALK" />
+                                <Button {...button} title="GITHUB" />
                             </a>
                         </Link>
                         <Drawer
@@ -56,7 +56,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
                             />
                             <Link href="#">
                                 <a className="navbar_drawer_button">
-                                    <Button {...button} title="LET'S TALK" />
+                                    <Button {...button} title="GITHUB" />
                                 </a>
                             </Link>
                         </Drawer>

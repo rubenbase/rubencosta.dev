@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
 import Navbar from "../containers/navbar";
-// import { ResetCSS } from "common/src/assets/css/style";
+import { ContentWrapper, GlobalStyle } from "../containers/global.style";
 
 import { DrawerProvider } from "common/src/contexts/drawer-context";
 
@@ -19,10 +19,13 @@ export default () => {
                 />
             </Head>
 
-            {/* <ResetCSS /> */}
-            <DrawerProvider>
-                <Navbar />
-            </DrawerProvider>
+            <GlobalStyle />
+
+            <ContentWrapper>
+                <DrawerProvider>
+                    <Navbar />
+                </DrawerProvider>
+            </ContentWrapper>
         </Fragment>
     );
 };
