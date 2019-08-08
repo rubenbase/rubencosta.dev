@@ -6,12 +6,16 @@ import NavbarWrapper from "reusecore/src/elements/navbar";
 import Box from "reusecore/src/elements/box";
 import Button from "reusecore/src/elements/button";
 import Drawer from "reusecore/src/elements/Drawer";
+import Logo from "reusecore/src/elements/UI/Logo";
 
 import { DrawerContext } from "common/src/contexts/drawer-context";
 import Container from "common/src/components/ui/container";
 import ScrollSpyMenu from "common/src/components/scrollSpyMenu";
 import HamburguerMenu from "common/src/components/HamburguerMenu";
 import { MENU_ITEMS } from "common/src/data/";
+
+// import LogoImage from "common/src/assets/image/logo.png";
+// import LogoImageAlt from "common/src/assets/image/logo-alt.png";
 
 const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
     const { state, dispatch } = useContext(DrawerContext);
@@ -27,7 +31,20 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
         <NavbarWrapper {...navbarStyle} className="portfolio_navbar">
             <Container noGutter mobileGutter width="1200px">
                 <Box {...row}>
-                    <h3>Logo</h3>
+                    <Logo
+                        href="#"
+                        // logoSrc={LogoImage}
+                        title="RC"
+                        logoStyle={logoStyle}
+                        className="main-logo"
+                    />
+                    <Logo
+                        href="#"
+                        // logoSrc={LogoImageAlt}
+                        title="RC"
+                        logoStyle={logoStyle}
+                        className="logo-alt"
+                    />
                     <Box {...menuWrapper}>
                         <ScrollSpyMenu
                             className="main_menu"
