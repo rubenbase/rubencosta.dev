@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import Navbar from "../containers/navbar";
 import { ContentWrapper, GlobalStyle } from "../containers/global.style";
+import PortfolioShowcase from "../containers/PortfolioShowcase";
 
 import { DrawerProvider } from "common/src/contexts/drawer-context";
 
@@ -10,7 +11,7 @@ export default () => {
         <Fragment>
             <Head>
                 <title>Ruben Costa</title>
-                <meta name="Description" content="React next landing page" />
+                <meta name="Description" content="Ruben Costa portfolio page" />
                 <meta name="theme-color" content="#ec5555" />
                 {/* Load google fonts */}
                 <link
@@ -25,6 +26,7 @@ export default () => {
                 <DrawerProvider>
                     <Navbar />
                 </DrawerProvider>
+                <PortfolioShowcase />
             </ContentWrapper>
         </Fragment>
     );
