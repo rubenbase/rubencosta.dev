@@ -5,6 +5,7 @@ import { ContentWrapper, GlobalStyle } from "../containers/global.style";
 import PortfolioShowcase from "../containers/PortfolioShowcase";
 
 import { DrawerProvider } from "common/src/contexts/drawer-context";
+import PortfolioShowcase2 from "../containers/PortfolioShowcase2";
 
 export default () => {
     return (
@@ -26,6 +27,9 @@ export default () => {
                 <DrawerProvider>
                     <Navbar />
                 </DrawerProvider>
+
+                <div style={{ marginTop: 300 }}></div>
+                <PortfolioShowcase2 />
                 <PortfolioShowcase />
             </ContentWrapper>
         </Fragment>
