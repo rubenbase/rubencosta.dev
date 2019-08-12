@@ -79,7 +79,7 @@ export const PORTFOLIO_SHOWCASE = [
         title: "DESIGN",
         portfolioItem: [
             {
-                title: "Example Site",
+                title: "Hosply",
                 description: "Lorem description ",
                 image: PortfolioImage1,
                 link: "#",

@@ -195,7 +195,7 @@ export const ContentWrapper = styled.div`
                 }
                 &.is-current {
                     a {
-                        color: #fff;
+                        color: #000; 
                         &:after {
                             transform: scaleX(1);
                             transform-origin: left center 0;
@@ -207,13 +207,14 @@ export const ContentWrapper = styled.div`
                 a {
                     padding: 5px;
                     font-size: 16px;
+                    text-decoration: none;
                     font-weight: 700;
-                    color: #fff;
+                    color: #000;
                     position: relative;
                     font-family: "Raleway", sans-serif;
                     transition: 0.15s ease-in-out;
                     &:hover {
-                        color: #fff;
+                        color: #000;
                         &:after {
                             transform: scaleX(1);
                             transform-origin: left center 0;
@@ -226,7 +227,7 @@ export const ContentWrapper = styled.div`
                         position: absolute;
                         width: calc(100% - 8px);
                         height: 11px;
-                        background: #3444f1;
+                        background: #eaecfe;
                         bottom: 6px;
                         left: 0;
                         z-index: -1;
@@ -242,6 +243,10 @@ export const ContentWrapper = styled.div`
             }
         }
         .navbar_button {
+            
+
+                text-decoration: none;
+            
             button {
                 font-family: "Raleway", sans-serif;
                 font-weight: 700;
