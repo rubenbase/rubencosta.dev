@@ -98,18 +98,13 @@ function PortfolioShowcase({
                                             <PortfolioMeta>
                                                 {portfolioItem.featuredIn ? (
                                                     <MetaItem className="meta_featured">
-                                                        FEATURED IN
                                                         <Link
                                                             href={
                                                                 portfolioItem.featuredLink ||
                                                                 "#"
                                                             }
                                                         >
-                                                            <a>
-                                                                {
-                                                                    portfolioItem.featuredIn
-                                                                }
-                                                            </a>
+                                                            <a>SEE MORE</a>
                                                         </Link>
                                                     </MetaItem>
                                                 ) : (

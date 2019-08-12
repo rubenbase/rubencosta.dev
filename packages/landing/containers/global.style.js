@@ -59,7 +59,7 @@ export const GlobalStyle = createGlobalStyle`
               &:before {
                 transform: scaleX(1);
                 transform-origin: left center 0;
-                transition: transform 0.35s cubic-bezier(0.43, 0.49, 0.51, 0.68);
+                /* transition: transform 0.35s cubic-bezier(0.43, 0.49, 0.51, 0.68); */
               }
             }
             &:before{
@@ -73,7 +73,7 @@ export const GlobalStyle = createGlobalStyle`
               z-index: -1;
               transform: scaleX(0);
               transform-origin: right center 0;
-              transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+              /* transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1) 0s; */
             }
           }
           &.is-current {
@@ -81,7 +81,7 @@ export const GlobalStyle = createGlobalStyle`
               &:before {
                 transform: scaleX(1);
                 transform-origin: left center 0;
-                transition: transform 0.35s cubic-bezier(0.43, 0.49, 0.51, 0.68);
+                /* transition: transform 0.35s cubic-bezier(0.43, 0.49, 0.51, 0.68); */
               }
             }
           }
@@ -200,7 +200,7 @@ export const ContentWrapper = styled.div`
                             transform: scaleX(1);
                             transform-origin: left center 0;
                             transition: transform 0.35s
-                                cubic-bezier(0.43, 0.49, 0.51, 0.68);
+                                /* cubic-bezier(0.43, 0.49, 0.51, 0.68); */
                         }
                     }
                 }
@@ -218,7 +218,7 @@ export const ContentWrapper = styled.div`
                             transform: scaleX(1);
                             transform-origin: left center 0;
                             transition: transform 0.35s
-                                cubic-bezier(0.43, 0.49, 0.51, 0.68);
+                                /* cubic-bezier(0.43, 0.49, 0.51, 0.68); */
                         }
                     }
                     &:after {
@@ -233,7 +233,7 @@ export const ContentWrapper = styled.div`
                         transform: scaleX(0);
                         transform-origin: right center 0;
                         transition: transform 0.7s
-                            cubic-bezier(0.19, 1, 0.22, 1) 0s;
+                            /* cubic-bezier(0.19, 1, 0.22, 1) 0s; */
                     }
                 }
             }
@@ -329,7 +329,7 @@ export const PrevButton = styled.div`
         background: #d1d3de;
         display: block;
         position: relative;
-        transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        /* transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95); */
         &:before,
         &:after {
             content: "";
@@ -372,7 +372,7 @@ export const NextButton = styled.div`
         background: #d1d3de;
         display: block;
         position: relative;
-        transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        /* transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95); */
         &:before,
         &:after {
             content: "";
