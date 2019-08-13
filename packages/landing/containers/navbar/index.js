@@ -14,9 +14,6 @@ import ScrollSpyMenu from "common/src/components/scrollSpyMenu";
 import HamburguerMenu from "common/src/components/hamburguerMenu";
 import { MENU_ITEMS } from "common/src/data/";
 
-// import LogoImage from "common/src/assets/image/logo.png";
-// import LogoImageAlt from "common/src/assets/image/logo-alt.png";
-
 const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
     const { state, dispatch } = useContext(DrawerContext);
 
