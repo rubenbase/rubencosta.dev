@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Text from "../../Text";
-import Link from "../../Link";
-import Image from "../../Image";
+import Text from "../../text";
+import Link from "../../link";
+import Image from "../../image";
 
 function Logo({
   logoWrapperStyle,
