@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import NavbarWrapper from "reusecore/src/elements/navbar";
 import Box from "reusecore/src/elements/box";
 import Button from "reusecore/src/elements/button";
-import Drawer from "reusecore/src/elements/Drawer";
-import Logo from "reusecore/src/elements/UI/Logo";
+import Drawer from "reusecore/src/elements/drawer";
+import Logo from "reusecore/src/elements/ui/logo";
 
 import { DrawerContext } from "common/src/contexts/drawer-context";
 import Container from "common/src/components/ui/container";
