@@ -11,7 +11,7 @@ import Logo from "reusecore/src/elements/UI/Logo";
 import { DrawerContext } from "common/src/contexts/drawer-context";
 import Container from "common/src/components/ui/container";
 import ScrollSpyMenu from "common/src/components/scrollSpyMenu";
-import HamburguerMenu from "common/src/components/HamburguerMenu";
+import HamburguerMenu from "common/src/components/hamburguerMenu";
 import { MENU_ITEMS } from "common/src/data/";
 
 // import LogoImage from "common/src/assets/image/logo.png";
