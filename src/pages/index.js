@@ -3,11 +3,13 @@ import styled from '@emotion/styled'
 
 import Hero from 'components/sections/hero'
 import Wrapper from 'components/layouts/wrapper'
+import ResetCSS from 'components/atoms/reset-css'
 
 export default class IndexPage extends React.Component {
 	render() {
 		return (
 			<>
+				<ResetCSS />
 				<Hero />
 
 				<SecondSection>

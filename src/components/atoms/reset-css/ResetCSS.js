@@ -8,12 +8,12 @@ function ResetCSS() {
 			<Global
 				styles={{
 					html: {
-						fontFamily: 'Open Sans',
 						MozTextSizeAdjust: '100%',
 						WebkitTextSizeAdjust: '100%'
 					},
 					body: {
-						margin: 0
+						backgroundColor: '#2B192F',
+						color: 'white'
 					}
 				}}
 			/>
