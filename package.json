@@ -1,66 +1,74 @@
 {
-    "name": "rubencosta.dev",
-    "description": "Personal website",
-    "version": "3.0.1",
-    "private": true,
-    "author": "Ruben Costa",
-    "license": "",
-    "repository": {
-        "type": "git",
-        "url": ""
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.5.0",
-        "cpx": "^1.5.0",
-        "cross-env": "^5.2.0",
-        "husky": "^3.0.0",
-        "lerna": "^3.15.0",
-        "lint-staged": "^9.1.0",
-        "prettier": "^1.18.2",
-        "rimraf": "^2.6.3"
-    },
-    "workspaces": [
-        "packages/common",
-        "packages/landing",
-        "packages/reusecore"
-    ],
-    "scripts": {
-        "clean": "lerna clean --yes && rimraf node_modules",
-        "commit": "yarn prebuild-public && git add . && git commit",
-        "gatsby-dev": "yarn workspace gatsby-landing run dev",
-        "gatsby-build": "yarn workspace gatsby-landing run build",
-        "gatsby-serve": "yarn workspace gatsby-landing run serve",
-        "start": "lerna run --parallel dev",
-        "test": "echo testing",
-        "preweb": "cpx \"packages/common/src/assets/image/**/*.*\" \"packages/landing/static\" -C",
-        "web": "yarn workspace next-landing run dev",
-        "landing-build": "rimraf dist && yarn workspace next-landing run build",
-        "landing-start": "yarn workspace next-landing run start",
-        "landing-export": "yarn workspace next-landing run export",
-        "prebuild-public": "rimraf \"dist/functions/**\" && rimraf \"dist/public\"",
-        "prefirebase-serve": "yarn run build-public && yarn run build-funcs && yarn workspace next-landing run build && yarn run copy-deps && yarn run install-deps",
-        "firebase-serve": "cross-env NODE_ENV=production firebase serve",
-        "prefirebase-deploy": "yarn run build-public && yarn run build-funcs && yarn workspace next-landing run build && yarn run copy-deps",
-        "firebase-deploy": "firebase deploy",
-        "build-public": "cpx \"packages/common/src/assets/**/*.*\" \"dist/public/static\" -C && cpx \"public/**/*.*\" \"dist/public\" -C",
-        "build-funcs": "babel \"packages/functions\" --out-dir \"dist/functions\"",
-        "copy-deps": "cpx \"packages/landing/*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
-        "install-deps": "cd \"dist/functions\" && yarn",
-        "pregatsby-firebase-serve": "rimraf dist && yarn run gatsby-build && cpx \"packages/landing-gatsby/public/**/*.*\" \"dist/public\" -C",
-        "gatsby-firebase-serve": "cross-env NODE_ENV=production firebase serve",
-        "pregatsby-firebase-deploy": "rimraf dist && yarn run gatsby-build && cpx \"packages/landing-gatsby/public/**/*.*\" \"dist/public\" -C",
-        "gatsby-firebase-deploy": "firebase deploy",
-        "netlify-deploy": "yarn workspace next-landing run netlify-build"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,md,css}": [
-            "prettier --trailing-comma es5 --single-quote --write",
-            "git add"
-        ]
+  "name": "rubencosta.dev",
+  "description": "Personal website",
+  "version": "0.0.1",
+  "author": "Ruben Costa <costamartinezruben@gmail.com>",
+  "keywords": [
+    "personal"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenbase/rubencosta.dev"
+  },
+  "bugs": {
+    "url": "https://github.com/rubenbase/rubencosta.dev/issues"
+  },
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "@olivine/base": "^0.2.5",
+    "@olivine/theme": "^0.1.13",
+    "@reach/dialog": "^0.2.9",
+    "@reach/tabs": "^0.1.6",
+    "@reach/visually-hidden": "^0.1.4",
+    "await-to-js": "^2.1.1",
+    "babel-plugin-styled-components": "^1.10.7",
+    "emotion-theming": "^10.0.27",
+    "gatsby": "^2.15.11",
+    "gatsby-image": "^2.2.17",
+    "gatsby-plugin-create-client-paths": "^2.1.6",
+    "gatsby-plugin-emotion": "^4.1.18",
+    "gatsby-plugin-manifest": "^2.2.15",
+    "gatsby-plugin-netlify-identity": "^0.0.3",
+    "gatsby-plugin-offline": "^2.2.10",
+    "gatsby-plugin-react-helmet": "^3.1.6",
+    "gatsby-plugin-resolve-src": "^2.0.0",
+    "gatsby-plugin-sharp": "^2.2.20",
+    "gatsby-plugin-styled-components": "^3.1.19",
+    "gatsby-source-filesystem": "^2.1.21",
+    "gatsby-transformer-sharp": "^2.2.13",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.8.0",
+    "react-netlify-identity-widget": "^0.2.5"
+  },
+  "devDependencies": {
+    "gatsby-plugin-typography": "^2.3.21",
+    "husky": ">=1",
+    "lint-staged": ">=8",
+    "prettier": "^1.18.2",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
