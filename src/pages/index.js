@@ -9,6 +9,7 @@ export default class IndexPage extends React.Component {
 		return (
 			<>
 				<Hero />
+
 				<SecondSection>
 					<Wrapper>
 						<Stats>
@@ -34,7 +35,55 @@ export default class IndexPage extends React.Component {
 							</li>
 						</Stats>
 					</Wrapper>
+					<CarousalContainer>
+						<img
+							src="images/arrow.svg"
+							id="left-arrow"
+							class="arrows"
+							alt="Move testimonials to the left"
+						/>
+						<Carousal>
+							<li>
+								<blockquote>
+									Deserunt tempor commodo occaecat eu. Reprehenderit aliqua ut pariatur laboris elit
+									excepteur quis tempor nisi. Ea reprehenderit est sunt anim sit sit laborum labore
+									ad eu sit tempor sit. Ut culpa quis id fugiat sint magna do esse dolore ipsum et.
+									Cillum in ad consequat ex et enim pariatur non incididunt sunt reprehenderit sint
+									cupidatat.
+								</blockquote>
+								<cite>John Doe</cite>
+							</li>
+							<li>
+								<blockquote>
+									Deserunt tempor commodo occaecat eu. Reprehenderit aliqua ut pariatur laboris elit
+									excepteur quis tempor nisi. Ea reprehenderit est sunt anim sit sit laborum labore
+									ad eu sit tempor sit. Ut culpa quis id fugiat sint magna do esse dolore ipsum et.
+									Cillum in ad consequat ex et enim pariatur non incididunt sunt reprehenderit sint
+									cupidatat.
+								</blockquote>
+								<cite>Nerea Pardo</cite>
+							</li>
+						</Carousal>
+						<img
+							src="images/arrow.svg"
+							id="right-arrow"
+							class="arrows"
+							alt="Move testimonials to the right"
+						/>
+					</CarousalContainer>
 				</SecondSection>
+
+				<Wrapper>
+					<h2>Deserunt tempor commodo occaecat eu...</h2>
+					<Companies>
+						<li>
+							<img src="images/company1.svg" alt="company1" className="company1" />
+							<img src="images/company2.svg" alt="company2" className="company2" />
+							<img src="images/company1.svg" alt="company1" className="company1" />
+							<img src="images/company2.svg" alt="company2" className="company2" />
+						</li>
+					</Companies>
+				</Wrapper>
 			</>
 		)
 	}
@@ -42,3 +91,6 @@ export default class IndexPage extends React.Component {
 
 const SecondSection = styled.div``
 const Stats = styled.ul``
+const CarousalContainer = styled.div``
+const Carousal = styled.ul``
+const Companies = styled.ul``
