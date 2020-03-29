@@ -39,7 +39,7 @@ export default class Hero extends Component {
 }
 
 const HeroWrapper = styled.div`
-	background: url(${background}) rgba(180, 0, 163, 0.95);
+	background: url(${background}) rgba(200, 31, 219, 0.95);
 	background-size: cover;
 	background-blend-mode: multiply;
 `
