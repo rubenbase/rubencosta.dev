@@ -45,24 +45,24 @@ export default class IndexPage extends React.Component {
 						<img src={arrowImg} id="right-arrow" alt="Move testimonials to the right" />
 						<Carousal>
 							<li>
-								<blockquote>
+								<Blockquote>
 									Deserunt tempor commodo occaecat eu. Reprehenderit aliqua ut pariatur laboris elit
 									excepteur quis tempor nisi. Ea reprehenderit est sunt anim sit sit laborum labore
 									ad eu sit tempor sit. Ut culpa quis id fugiat sint magna do esse dolore ipsum et.
 									Cillum in ad consequat ex et enim pariatur non incididunt sunt reprehenderit sint
 									cupidatat.
-								</blockquote>
-								<cite>John Doe</cite>
+								</Blockquote>
+								<Cite>John Doe</Cite>
 							</li>
 							<li>
-								<blockquote>
+								<Blockquote>
 									Deserunt tempor commodo occaecat eu. Reprehenderit aliqua ut pariatur laboris elit
 									excepteur quis tempor nisi. Ea reprehenderit est sunt anim sit sit laborum labore
 									ad eu sit tempor sit. Ut culpa quis id fugiat sint magna do esse dolore ipsum et.
 									Cillum in ad consequat ex et enim pariatur non incididunt sunt reprehenderit sint
 									cupidatat.
-								</blockquote>
-								<cite>Nerea Pardo</cite>
+								</Blockquote>
+								<Cite>Nerea Pardo</Cite>
 							</li>
 						</Carousal>
 						<img src={arrowImg} id="right-arrow" alt="Move testimonials to the right" />
@@ -115,5 +115,35 @@ const CarousalContainer = styled.div`
 `
 const Carousal = styled.ul`
 	margin-bottom: 1em;
+
+	li {
+		background-color: #422847;
+		padding: 1em;
+		margin-bottom: 1em;
+	}
+`
+const Blockquote = styled.blockquote`
+	margin: 0;
+	font-size: 0.8em;
+	line-height: 1.8em;
+	margin-bottom: 1em;
+`
+const Cite = styled.cite`
+	color: #e379ff;
+	font-weight: 0.8em;
+	font-weight: bold;
+	font-style: normal;
+	position: relative;
+	padding-left: 25px;
+
+	::before {
+		content: ' ';
+		position: absolute;
+		left: 0;
+		top: 10px;
+		height: 1px;
+		width: 20px;
+		border-bottom: 1px solid white;
+	}
 `
 const Companies = styled.ul``
