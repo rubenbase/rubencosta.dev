@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
+// components
 import Hero from 'components/sections/hero'
 import Wrapper from 'components/layouts/wrapper'
 import ResetCSS from 'components/atoms/reset-css'
 
+import arrowImg from '../images/arrow.svg'
+
 export default class IndexPage extends React.Component {
 	render() {
+		console.log(this.props)
 		return (
 			<>
 				<ResetCSS />
@@ -38,12 +42,7 @@ export default class IndexPage extends React.Component {
 						</Stats>
 					</Wrapper>
 					<CarousalContainer>
-						<img
-							src="images/arrow.svg"
-							id="left-arrow"
-							class="arrows"
-							alt="Move testimonials to the left"
-						/>
+						<img src={arrowImg} id="right-arrow" alt="Move testimonials to the right" />
 						<Carousal>
 							<li>
 								<blockquote>
@@ -66,12 +65,7 @@ export default class IndexPage extends React.Component {
 								<cite>Nerea Pardo</cite>
 							</li>
 						</Carousal>
-						<img
-							src="images/arrow.svg"
-							id="right-arrow"
-							class="arrows"
-							alt="Move testimonials to the right"
-						/>
+						<img src={arrowImg} id="right-arrow" alt="Move testimonials to the right" />
 					</CarousalContainer>
 				</SecondSection>
 
@@ -91,8 +85,35 @@ export default class IndexPage extends React.Component {
 	}
 }
 
-const SecondSection = styled.div``
-const Stats = styled.ul``
-const CarousalContainer = styled.div``
-const Carousal = styled.ul``
+const SecondSection = styled.div`
+	background-color: #351f3a;
+`
+const Stats = styled.ul`
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+	justify-content: space-around;
+	margin-top: 2em;
+
+	& li {
+		margin-bottom: 1.5em;
+	}
+
+	strong {
+		font-size: 1.4em;
+	}
+
+	span {
+		display: block;
+		text-transform: uppercase;
+		font-size: 0.75em;
+	}
+`
+const CarousalContainer = styled.div`
+	padding: 0 1.5em 2em;
+	max-width: 1230px;
+	margin: 0 auto;
+`
+const Carousal = styled.ul`
+	margin-bottom: 1em;
+`
 const Companies = styled.ul``

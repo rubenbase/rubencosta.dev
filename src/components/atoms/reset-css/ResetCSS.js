@@ -13,6 +13,7 @@ function ResetCSS() {
 					},
 					body: {
 						backgroundColor: '#2B192F',
+						fontSize: '16px',
 						color: 'white'
 					}
 				}}
