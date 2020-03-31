@@ -9,7 +9,19 @@ import Wrapper from 'components/layouts/wrapper'
 import ResetCSS from 'components/atoms/reset-css'
 
 import arrowImg from '../images/arrow.svg'
+import { colors } from 'styles'
 
+const blogPosts = [
+	{
+		title: 'Replace axios with a simple custom fetch wrapper',
+		preview:
+			"Axios can do a ton of stuff, but here's a simpler solution that can handle most use cases"
+	},
+	{
+		title: 'How to test custom React hooks',
+		preview: 'Get confidence your custom React hooks work properly with solid tests.'
+	}
+]
 export default class IndexPage extends React.Component {
 	render() {
 		console.log(this.props)
@@ -61,16 +73,51 @@ export default class IndexPage extends React.Component {
 						>
 							Read my latest articles
 						</h2>
-						<Companies>
+						<ArticlesContainer>
+							{blogPosts.map(({ title, preview }) => (
+								<Article>
+									<h3>{title}</h3>
+									<p>{preview}</p>
+								</Article>
+							))}
+						</ArticlesContainer>
+						<div
+							css={css`
+								margin: 2em 0;
+								cursor: pointer;
+								text-align: center;
+							`}
+						>
+							<a
+								css={css`
+									padding: 0.8em;
+									color: ${colors.dark} !important;
+									text-transform: uppercase;
+									border: 1px dashed ${colors.dark};
+									display: inline-block;
+									transition: all 0.4s ease 0s;
+
+									:hover {
+										color: #ffffff !important;
+										background: ${colors.dark};
+										border-color: ${colors.dark};
+										transition: all 0.4s ease 0s;
+									}
+								`}
+							>
+								see all the articles
+							</a>
+						</div>
+						{/* <Companies>
 							<li>
 								<img src="images/company1.svg" alt="company1" className="company1" />
 								<img src="images/company2.svg" alt="company2" className="company2" />
 								<img src="images/company1.svg" alt="company1" className="company1" />
 								<img src="images/company2.svg" alt="company2" className="company2" />
 							</li>
-						</Companies>
+						</Companies> */}
 					</Wrapper>
-					<CarousalContainer>
+					{/* <CarousalContainer>
 						<img
 							css={css`
 								display: none;
@@ -109,7 +156,7 @@ export default class IndexPage extends React.Component {
 							id="right-arrow"
 							alt="Move testimonials to the right"
 						/>
-					</CarousalContainer>
+					</CarousalContainer> */}
 				</SecondSection>
 			</>
 		)
@@ -144,6 +191,24 @@ const CarousalContainer = styled.div`
 	padding: 0 1.5em 2em;
 	max-width: 1230px;
 	margin: 0 auto;
+`
+const ArticlesContainer = styled.div`
+	text-align: center;
+	padding: 2em 1.5em;
+	max-width: 1230px;
+	margin: 0 auto;
+	background-color: rgb(247, 248, 252);
+`
+const Article = styled.div`
+	padding: 1.5em;
+	& h3 {
+		margin-bottom: 0.5em;
+	}
+
+	& p {
+		font-style: italic;
+		margin: 0;
+	}
 `
 const Carousal = styled.ul`
 	margin-bottom: 1em;

@@ -14,17 +14,17 @@ export default class Hero extends Component {
 				<HeroWrapper>
 					<Wrapper>
 						<Header>
-							<Logo href="#">Rubencosta</Logo>
+							<Logo href="#">rubencosta</Logo>
 							<Nav>
+								<li>
+									<a href="#">Blog</a>
+								</li>
 								{/* <li>
-									<a href="#">Home</a>
-								</li>
-								<li>
 									<a href="#">About</a>
-								</li>
-								<li>
-									<a href="#">Contact</a>
 								</li> */}
+								<li>
+									<a href="https://github.com/rubenbase">Github</a>
+								</li>
 							</Nav>
 						</Header>
 						<HeroContent>
@@ -59,6 +59,7 @@ const Nav = styled.ul`
 	display: flex;
 
 	li a {
+		font-size: 1.2em;
 		padding: 0 0.6em;
 	}
 `
