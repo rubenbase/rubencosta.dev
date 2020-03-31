@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 
-import background from '../../../images/gatsby-astronaut.png'
 import Wrapper from 'components/layouts/wrapper'
+
 // import Image from 'components/atoms/image'
+import background from '../../../images/gatsby-astronaut.png'
+import { colors } from 'styles'
 
 export default class Hero extends Component {
 	render() {
@@ -12,9 +14,9 @@ export default class Hero extends Component {
 				<HeroWrapper>
 					<Wrapper>
 						<Header>
-							<Logo href="#">RubenCosta</Logo>
+							<Logo href="#">Rubencosta</Logo>
 							<Nav>
-								<li>
+								{/* <li>
 									<a href="#">Home</a>
 								</li>
 								<li>
@@ -22,12 +24,12 @@ export default class Hero extends Component {
 								</li>
 								<li>
 									<a href="#">Contact</a>
-								</li>
+								</li> */}
 							</Nav>
 						</Header>
 						<HeroContent>
-							<h1>Do dolor cillum et commodo aute amet ex labore.</h1>
-							<Subtitle>Teaching UI/UX &amp; Frontend Development</Subtitle>
+							<h1>I Build Awesome Experiences Through Quality Software</h1>
+							<Subtitle>Cloud &amp; Software Developer</Subtitle>
 						</HeroContent>
 					</Wrapper>
 				</HeroWrapper>
@@ -37,9 +39,10 @@ export default class Hero extends Component {
 }
 
 const HeroWrapper = styled.div`
-	background: url(${background}) rgba(212, 31, 255, 0.99);
+	/* background: url(${background}) rgba(212, 31, 255, 0.99);
 	background-size: cover;
-	background-blend-mode: color-burn;
+  background-blend-mode: color-burn; */
+  background-color: ${colors.primary};
 `
 
 const Header = styled.header`
@@ -47,8 +50,9 @@ const Header = styled.header`
 	justify-content: space-between;
 `
 const Logo = styled.a`
-	font-weight: bold;
-	font-family: 'Impact';
+	/* font-weight: bold; */
+	font-family: 'Roboto';
+	font-weight: 500;
 	font-size: 26px;
 `
 const Nav = styled.ul`
@@ -62,9 +66,14 @@ const HeroContent = styled.div`
 	margin: 4em 0 2em;
 
 	& h1 {
+		line-height: 1.4em;
+		font-size: 3em;
 		margin: 0.67em 0;
 	}
 `
 const Subtitle = styled.p`
+	font-size: 1.4em;
+	font-family: 'Roboto';
+	font-weight: 300;
 	margin-bottom: 0;
 `

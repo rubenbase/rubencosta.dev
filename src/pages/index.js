@@ -1,5 +1,7 @@
+/** @jsx jsx */
 import React from 'react'
 import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 
 // components
 import Hero from 'components/sections/hero'
@@ -41,8 +43,42 @@ export default class IndexPage extends React.Component {
 							</li>
 						</Stats>
 					</Wrapper>
+					<Wrapper>
+						<h2
+							css={css`
+								text-align: center;
+								position: relative;
+								margin-top: 2em;
+								::before {
+									content: '';
+									position: absolute;
+									height: 5px;
+									width: 30px;
+									background-color: rgb(237, 50, 185);
+									top: -0.3em;
+								}
+							`}
+						>
+							Read my latest articles
+						</h2>
+						<Companies>
+							<li>
+								<img src="images/company1.svg" alt="company1" className="company1" />
+								<img src="images/company2.svg" alt="company2" className="company2" />
+								<img src="images/company1.svg" alt="company1" className="company1" />
+								<img src="images/company2.svg" alt="company2" className="company2" />
+							</li>
+						</Companies>
+					</Wrapper>
 					<CarousalContainer>
-						<img src={arrowImg} id="right-arrow" alt="Move testimonials to the right" />
+						<img
+							css={css`
+								display: none;
+							`}
+							src={arrowImg}
+							id="right-arrow"
+							alt="Move testimonials to the right"
+						/>
 						<Carousal>
 							<li>
 								<Blockquote>
@@ -65,34 +101,30 @@ export default class IndexPage extends React.Component {
 								<Cite>Nerea Pardo</Cite>
 							</li>
 						</Carousal>
-						<img src={arrowImg} id="right-arrow" alt="Move testimonials to the right" />
+						<img
+							css={css`
+								display: none;
+							`}
+							src={arrowImg}
+							id="right-arrow"
+							alt="Move testimonials to the right"
+						/>
 					</CarousalContainer>
 				</SecondSection>
-
-				<Wrapper>
-					<h2>Deserunt tempor commodo occaecat eu...</h2>
-					<Companies>
-						<li>
-							<img src="images/company1.svg" alt="company1" className="company1" />
-							<img src="images/company2.svg" alt="company2" className="company2" />
-							<img src="images/company1.svg" alt="company1" className="company1" />
-							<img src="images/company2.svg" alt="company2" className="company2" />
-						</li>
-					</Companies>
-				</Wrapper>
 			</>
 		)
 	}
 }
 
 const SecondSection = styled.div`
-	background-color: #351f3a;
+	background-color: #fff;
 `
 const Stats = styled.ul`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
 	justify-content: space-around;
 	margin-top: 2em;
+	margin-bottom: 0;
 
 	& li {
 		margin-bottom: 1.5em;
@@ -117,7 +149,7 @@ const Carousal = styled.ul`
 	margin-bottom: 1em;
 
 	li {
-		background-color: #422847;
+		background-color: rgb(247, 248, 252);
 		padding: 1em;
 		margin-bottom: 1em;
 	}
@@ -143,7 +175,14 @@ const Cite = styled.cite`
 		top: 10px;
 		height: 1px;
 		width: 20px;
-		border-bottom: 1px solid white;
+		border-bottom: 1px solid rgb(4, 13, 20);
 	}
 `
-const Companies = styled.ul``
+const Companies = styled.ul`
+	text-align: center;
+	opacity: 0.4;
+
+	li {
+		margin: 2em 0;
+	}
+`

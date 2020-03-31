@@ -6,11 +6,11 @@ const typography = new Typography({
 	googleFonts: [
 		{
 			name: 'Montserrat',
-			styles: ['700']
+			styles: ['400', '700']
 		},
 		{
 			name: 'Roboto',
-			styles: ['400']
+			styles: ['400', '500']
 		}
 	],
 	headerFontFamily: ['Montserrat', 'Arial', 'sans-serif'],
