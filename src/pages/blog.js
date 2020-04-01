@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
@@ -8,6 +8,7 @@ import ResetCSS from 'components/atoms/reset-css'
 import { colors } from 'styles'
 import Hero from 'components/sections/hero'
 import Wrapper from 'components/layouts/wrapper'
+import Dump from 'components/atoms/dump'
 
 const blogPosts = [
 	{
@@ -64,7 +65,9 @@ export default class Blog extends Component {
 							`}
 						>
 							{/* <ul > /</ul> */}
-							{this.props.data.allMdx.nodes.map(({ excerpt, frontmatter }) => (
+							<Dump data={this.props.data} />
+
+							{this.props.data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
 								<Card>
 									<ImagePlaceholder />
 									<h4
@@ -72,7 +75,7 @@ export default class Blog extends Component {
 											margin: 1em 0;
 										`}
 									>
-										<a href="/blog/post"> {frontmatter.title}</a>
+										<Link to={`/blog/${fields.slug}`}> {frontmatter.title}</Link>
 									</h4>
 									<div
 										css={css`
@@ -139,6 +142,9 @@ export const query = graphql`
 				frontmatter {
 					title
 					date
+				}
+				fields {
+					slug
 				}
 			}
 		}
