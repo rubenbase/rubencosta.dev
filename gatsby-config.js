@@ -19,6 +19,12 @@ module.exports = {
 		},
 		`gatsby-plugin-emotion`,
 		{
+			resolve: `gatsby-plugin-mdx`,
+			options: {
+				extensions: [`.mdx`, `.md`]
+			}
+		},
+		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				name: `images`,

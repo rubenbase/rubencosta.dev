@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { graphql } from 'gatsby'
 
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
@@ -63,7 +64,7 @@ export default class Blog extends Component {
 							`}
 						>
 							{/* <ul > /</ul> */}
-							{blogPosts.map(({ title, preview }) => (
+							{this.props.data.allMdx.nodes.map(({ excerpt, frontmatter }) => (
 								<Card>
 									<ImagePlaceholder />
 									<h4
@@ -71,7 +72,7 @@ export default class Blog extends Component {
 											margin: 1em 0;
 										`}
 									>
-										<a href="/blog/post"> {title}</a>
+										<a href="/blog/post"> {frontmatter.title}</a>
 									</h4>
 									<div
 										css={css`
@@ -96,7 +97,8 @@ export default class Blog extends Component {
 												color: #aaa;
 											`}
 										>
-											6 min ago
+											{frontmatter.date}
+											{/* 6 min ago */}
 										</span>
 									</div>
 								</Card>
@@ -123,4 +125,22 @@ const Card = styled.li`
 const BlogContainer = styled.section`
 	background-color: ${colors.light1};
 	padding: 2em 0;
+`
+
+export const query = graphql`
+	query SITE_INDEX_QUERY {
+		allMdx(
+			sort: { fields: [frontmatter___date], order: DESC }
+			filter: { frontmatter: { published: { eq: true } } }
+		) {
+			nodes {
+				id
+				excerpt(pruneLength: 250)
+				frontmatter {
+					title
+					date
+				}
+			}
+		}
+	}
 `
