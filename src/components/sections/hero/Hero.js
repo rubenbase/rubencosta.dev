@@ -14,22 +14,22 @@ export default class Hero extends Component {
 				<HeroWrapper>
 					<Wrapper>
 						<Header>
-							<Logo href="#">rubencosta</Logo>
+							<Logo href="/">rubencosta</Logo>
 							<Nav>
 								<li>
-									<a href="#">Blog</a>
+									<a href="/blog">Blog</a>
 								</li>
-								{/* <li>
-									<a href="#">About</a>
-								</li> */}
+								<li>
+									<a href="#">Experience</a>
+								</li>
 								<li>
 									<a href="https://github.com/rubenbase">Github</a>
 								</li>
 							</Nav>
 						</Header>
 						<HeroContent>
-							<h1>I Build Awesome Experiences Through Quality Software</h1>
-							<Subtitle>Cloud &amp; Software Developer</Subtitle>
+							<h1>{this.props.title || 'I Build Awesome Experiences Through Quality Software'}</h1>
+							<Subtitle>{this.props.subtitle || 'Cloud & Software Developer'}</Subtitle>
 						</HeroContent>
 					</Wrapper>
 				</HeroWrapper>
