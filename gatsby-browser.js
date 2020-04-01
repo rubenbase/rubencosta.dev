@@ -13,3 +13,6 @@
 // };
 
 // export { wrapPageElement };
+import { wrapRootElement as wrap } from 'utils/root-wrapper'
+
+export const wrapRootElement = wrap
