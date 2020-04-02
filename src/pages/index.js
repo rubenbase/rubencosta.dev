@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import { Link } from 'gatsby'
 import cookie from 'react-cookies'
 
 import styled from '@emotion/styled'
@@ -17,11 +17,13 @@ import { colors } from 'styles'
 
 const blogPosts = [
 	{
+		id: 1,
 		title: 'Replace axios with a simple custom fetch wrapper',
 		preview:
 			"Axios can do a ton of stuff, but here's a simpler solution that can handle most use cases"
 	},
 	{
+		id: 2,
 		title: 'How to test custom React hooks',
 		preview: 'Get confidence your custom React hooks work properly with solid tests.'
 	}
@@ -117,8 +119,8 @@ export default class IndexPage extends React.Component {
 									We use cookies to provide you with the best experience and show you relevant
 									advertising.
 								</span>
-								<a
-									href="#"
+								<Link
+									to="/"
 									css={css`
 										color: inherit;
 										-webkit-text-decoration: none;
@@ -144,7 +146,7 @@ export default class IndexPage extends React.Component {
 										{' '}
 										Learn More
 									</span>
-								</a>
+								</Link>
 							</div>
 							<button
 								onClick={this.handleClick}
@@ -266,8 +268,8 @@ export default class IndexPage extends React.Component {
 							Read my latest articles
 						</h2>
 						<ArticlesContainer>
-							{blogPosts.map(({ title, preview }) => (
-								<Article>
+							{blogPosts.map(({ id, title, preview }) => (
+								<Article key={id}>
 									<h3>{title}</h3>
 									<p>{preview}</p>
 								</Article>
@@ -280,7 +282,8 @@ export default class IndexPage extends React.Component {
 								text-align: center;
 							`}
 						>
-							<a
+							<Link
+								to="/blog"
 								css={css`
 									padding: 0.8em;
 									color: ${colors.dark} !important;
@@ -298,7 +301,7 @@ export default class IndexPage extends React.Component {
 								`}
 							>
 								see all the articles
-							</a>
+							</Link>
 						</div>
 						{/* <Companies>
 							<li>
