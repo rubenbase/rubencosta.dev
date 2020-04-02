@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'gatsby'
 
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
@@ -14,9 +15,9 @@ export default class NotFound extends Component {
 				<Page404Container>
 					<h1>404</h1>
 					<h2>Oops! Looks like this page doesn't exist</h2>
-					<a
+					<Link
 						role="button"
-						href="/"
+						to="/"
 						css={css`
 							padding: 0.8em;
 							color: ${colors.dark} !important;
@@ -34,7 +35,7 @@ export default class NotFound extends Component {
 						`}
 					>
 						Go back
-					</a>
+					</Link>
 				</Page404Container>
 			</>
 		)
