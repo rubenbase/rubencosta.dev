@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { graphql, Link } from 'gatsby'
+import { formatDistance, parseISO } from 'date-fns'
 
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
@@ -65,7 +66,7 @@ export default class Blog extends Component {
 							`}
 						>
 							{/* <ul > /</ul> */}
-							<Dump data={this.props.data} />
+							{/* <Dump data={this.props.data} /> */}
 
 							{this.props.data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
 								<Card>
@@ -100,7 +101,10 @@ export default class Blog extends Component {
 												color: #aaa;
 											`}
 										>
-											{frontmatter.date}
+											{/* {frontmatter.date} */}
+
+											{formatDistance(parseISO(frontmatter.date), new Date())}
+
 											{/* 6 min ago */}
 										</span>
 									</div>
