@@ -9,7 +9,8 @@ import ResetCSS from 'components/atoms/reset-css'
 import { colors } from 'styles'
 import Hero from 'components/sections/hero'
 import Wrapper from 'components/layouts/wrapper'
-import Dump from 'components/atoms/dump'
+
+import Img from 'gatsby-image'
 
 const blogPosts = [
 	{
@@ -70,7 +71,11 @@ export default class Blog extends Component {
 
 							{this.props.data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
 								<Card>
-									<ImagePlaceholder />
+									{!!frontmatter.cover ? (
+										<Image sizes={frontmatter.cover.childImageSharp.sizes} />
+									) : (
+										<ImagePlaceholder />
+									)}
 									<h4
 										css={css`
 											margin: 1em 0;
@@ -133,6 +138,9 @@ const BlogContainer = styled.section`
 	background-color: ${colors.light1};
 	padding: 2em 0;
 `
+const Image = styled(Img)`
+	border-radius: 5px;
+`
 
 export const query = graphql`
 	query SITE_INDEX_QUERY {
@@ -146,6 +154,14 @@ export const query = graphql`
 				frontmatter {
 					title
 					date
+					cover {
+						publicURL
+						childImageSharp {
+							sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
+								...GatsbyImageSharpSizes_tracedSVG
+							}
+						}
+					}
 				}
 				fields {
 					slug

@@ -1,13 +1,51 @@
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from '@emotion/styled'
+import { copyToClipboard } from 'utils/copy-to-clipboard'
+import { colors } from 'styles'
+import { css } from '@emotion/core'
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 
 const Code = props => {
+	const [isCopied, setIsCopied] = useState(false)
+
+	const handleClick = useCallback(() => {
+		copyToClipboard(props.codeString)
+		setIsCopied(true)
+		setTimeout(() => {
+			setIsCopied(false)
+		}, 2000)
+	})
+
+	if (props['react-live']) {
+		return (
+			<LiveProvider code={props.codeString} theme={theme}>
+				<LiveEditor />
+				<LiveError />
+				<LivePreview />
+			</LiveProvider>
+		)
+	}
+
 	return (
 		<>
 			<CodeContainer>
-				<CodeHeader>{props.metastring}</CodeHeader>
+				<CodeHeader>
+					<CopyCode isCopied={isCopied} onClick={handleClick}>
+						{isCopied ? 'Copied !' : 'Copy'}
+					</CopyCode>
+					<div
+						css={css`
+							width: 50%;
+							padding: 0 2em;
+							display: flex;
+							justify-content: center;
+						`}
+					>
+						{props.metastring}
+					</div>
+				</CodeHeader>
 				<Highlight
 					{...defaultProps}
 					code={props.codeString}
@@ -32,10 +70,23 @@ const Code = props => {
 		</>
 	)
 }
+const CopyCode = styled.button`
+	background-color: ${props => (props.isCopied ? colors.primary : 'white')};
+	border: 0;
+	width: 50%;
+	height: 100%;
+	border-radius: 10px 10px 0px 0px;
+	padding: 0 2em;
+	opacity: ${props => (props.isCopied ? '1' : '0.3')};
+	&:hover {
+		opacity: 1;
+	}
+`
 
 const CodeHeader = styled.div`
 	display: flex;
-	flex-direction: row-reverse;
+	/* flex-direction: row-reverse; */
+	justify-content: space-between;
 	align-items: center;
 	padding-right: 1em;
 	height: 30px;
@@ -50,10 +101,11 @@ const CodeContainer = styled.div`
 	margin: 2em 0;
 `
 const Pre = styled.pre`
-	border-top: 1px solid #ffffff29;
+	border-top: 1px solid #ffffff;
 	padding: 1em 2em;
 	font-size: 0.9em;
 	max-height: 340px;
+	position: relative;
 
 	& .token-line {
 		line-height: 1.5em;
