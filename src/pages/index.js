@@ -14,6 +14,7 @@ import ResetCSS from 'components/atoms/reset-css'
 // import arrowImg from '../images/arrow.svg'
 import { colors } from 'styles'
 import Footer from 'components/organisms/footer'
+import ColorSwitch from 'components/molecules/color-switch'
 
 const portalRoot = document.getElementById('cookie-overlay')
 
@@ -62,6 +63,7 @@ export default class IndexPage extends React.Component {
 		return (
 			<>
 				<ResetCSS />
+				<ColorSwitch />
 				<Portal>
 					{on ? (
 						<div

@@ -12,9 +12,9 @@ function ResetCSS() {
 						WebkitTextSizeAdjust: '100%'
 					},
 					body: {
-						backgroundColor: 'white',
-						fontSize: '16px',
-						color: 'rgb(4, 13, 20)'
+						// backgroundColor: 'white',
+						fontSize: '16px'
+						// color: 'rgb(4, 13, 20)'
 					}
 				}}
 			/>
