@@ -13,6 +13,7 @@ import ResetCSS from 'components/atoms/reset-css'
 
 // import arrowImg from '../images/arrow.svg'
 import { colors } from 'styles'
+import Footer from 'components/organisms/footer'
 
 const portalRoot = document.getElementById('cookie-overlay')
 
@@ -340,6 +341,7 @@ export default class IndexPage extends React.Component {
 						/>
 					</CarousalContainer> */}
 				</SecondSection>
+				<Footer />
 			</>
 		)
 	}
