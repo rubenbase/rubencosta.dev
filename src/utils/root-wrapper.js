@@ -1,11 +1,12 @@
-import { MDXProvider } from '@mdx-js/react'
 import React from 'react'
-import Code from 'components/organisms/code'
+
 import { css } from '@emotion/core'
+import { MDXProvider } from '@mdx-js/react'
+import { ThemeProvider } from 'context/ThemeContext'
+
+import Code from 'components/organisms/code'
 
 const components = {
-	// h2: ({ children }) => <h2 style={{ color: 'rebeccapurple' }}>{children}</h2>,
-	// a: ({ children }) => <a style={{ color: colors.primary }}>{children}</a>,
 	a: props => (
 		<a {...props} style={{ color: '#19a764' }}>
 			{props.children}
@@ -33,5 +34,7 @@ const components = {
 }
 
 export const wrapRootElement = ({ element }) => (
-	<MDXProvider components={components}>{element}</MDXProvider>
+	<ThemeProvider>
+		<MDXProvider components={components}>{element}</MDXProvider>
+	</ThemeProvider>
 )
