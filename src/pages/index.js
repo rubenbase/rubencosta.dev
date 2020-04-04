@@ -1,33 +1,18 @@
-/** @jsx jsx */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'gatsby'
 import cookie from 'react-cookies'
 
 import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/core'
 
 // components
 import Hero from 'components/sections/hero'
 import Wrapper from 'components/layouts/wrapper'
 import ResetCSS from 'components/atoms/reset-css'
 
-import arrowImg from '../images/arrow.svg'
+// import arrowImg from '../images/arrow.svg'
 import { colors } from 'styles'
-
-const blogPosts = [
-	{
-		id: 1,
-		title: 'Replace axios with a simple custom fetch wrapper',
-		preview:
-			"Axios can do a ton of stuff, but here's a simpler solution that can handle most use cases"
-	},
-	{
-		id: 2,
-		title: 'How to test custom React hooks',
-		preview: 'Get confidence your custom React hooks work properly with solid tests.'
-	}
-]
 
 const portalRoot = document.getElementById('cookie-overlay')
 
@@ -268,10 +253,12 @@ export default class IndexPage extends React.Component {
 							Read my latest articles
 						</h2>
 						<ArticlesContainer>
-							{blogPosts.map(({ id, title, preview }) => (
+							{this.props.data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
 								<Article key={id}>
-									<h3>{title}</h3>
-									<p>{preview}</p>
+									<h3>
+										<Link to={`/blog/${fields.slug}`}>{frontmatter.title}</Link>
+									</h3>
+									<p>{excerpt}</p>
 								</Article>
 							))}
 						</ArticlesContainer>
@@ -382,11 +369,11 @@ const Stats = styled.ul`
 		font-size: 0.75em;
 	}
 `
-const CarousalContainer = styled.div`
-	padding: 0 1.5em 2em;
-	max-width: 1230px;
-	margin: 0 auto;
-`
+// const CarousalContainer = styled.div`
+// 	padding: 0 1.5em 2em;
+// 	max-width: 1230px;
+// 	margin: 0 auto;
+// `
 const ArticlesContainer = styled.div`
 	text-align: center;
 	padding: 2em 1.5em;
@@ -405,44 +392,74 @@ const Article = styled.div`
 		margin: 0;
 	}
 `
-const Carousal = styled.ul`
-	margin-bottom: 1em;
+// const Carousal = styled.ul`
+// 	margin-bottom: 1em;
 
-	li {
-		background-color: rgb(247, 248, 252);
-		padding: 1em;
-		margin-bottom: 1em;
-	}
-`
-const Blockquote = styled.blockquote`
-	margin: 0;
-	font-size: 0.8em;
-	line-height: 1.8em;
-	margin-bottom: 1em;
-`
-const Cite = styled.cite`
-	color: #e379ff;
-	font-weight: 0.8em;
-	font-weight: bold;
-	font-style: normal;
-	position: relative;
-	padding-left: 25px;
+// 	li {
+// 		background-color: rgb(247, 248, 252);
+// 		padding: 1em;
+// 		margin-bottom: 1em;
+// 	}
+// `
+// const Blockquote = styled.blockquote`
+// 	margin: 0;
+// 	font-size: 0.8em;
+// 	line-height: 1.8em;
+// 	margin-bottom: 1em;
+// `
+// const Cite = styled.cite`
+// 	color: #e379ff;
+// 	font-weight: 0.8em;
+// 	font-weight: bold;
+// 	font-style: normal;
+// 	position: relative;
+// 	padding-left: 25px;
 
-	::before {
-		content: ' ';
-		position: absolute;
-		left: 0;
-		top: 10px;
-		height: 1px;
-		width: 20px;
-		border-bottom: 1px solid rgb(4, 13, 20);
-	}
-`
-const Companies = styled.ul`
-	text-align: center;
-	opacity: 0.4;
+// 	::before {
+// 		content: ' ';
+// 		position: absolute;
+// 		left: 0;
+// 		top: 10px;
+// 		height: 1px;
+// 		width: 20px;
+// 		border-bottom: 1px solid rgb(4, 13, 20);
+// 	}
+// `
+// const Companies = styled.ul`
+// 	text-align: center;
+// 	opacity: 0.4;
 
-	li {
-		margin: 2em 0;
+// 	li {
+// 		margin: 2em 0;
+// 	}
+// `
+
+export const query = graphql`
+	query SITE_INDEX_QUERY {
+		allMdx(
+			sort: { fields: [frontmatter___date], order: DESC }
+			filter: { frontmatter: { published: { eq: true } } }
+			limit: 3
+		) {
+			nodes {
+				id
+				excerpt(pruneLength: 150)
+				frontmatter {
+					title
+					date
+					cover {
+						publicURL
+						childImageSharp {
+							sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
+								...GatsbyImageSharpSizes_tracedSVG
+							}
+						}
+					}
+				}
+				fields {
+					slug
+				}
+			}
+		}
 	}
 `

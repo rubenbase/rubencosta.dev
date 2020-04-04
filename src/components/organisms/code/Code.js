@@ -16,7 +16,7 @@ const Code = props => {
 		setTimeout(() => {
 			setIsCopied(false)
 		}, 2000)
-	})
+	}, [props.codeString])
 
 	if (props['react-live']) {
 		return (

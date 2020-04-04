@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+
 import { graphql, Link } from 'gatsby'
 import { formatDistance, parseISO } from 'date-fns'
 
 import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/core'
 
 import ResetCSS from 'components/atoms/reset-css'
 import { colors } from 'styles'
@@ -11,36 +12,6 @@ import Hero from 'components/sections/hero'
 import Wrapper from 'components/layouts/wrapper'
 
 import Img from 'gatsby-image'
-
-const blogPosts = [
-	{
-		title: 'Replace axios with a simple custom fetch wrapper',
-		preview:
-			"Axios can do a ton of stuff, but here's a simpler solution that can handle most use cases"
-	},
-	{
-		title: 'How to test custom React hooks',
-		preview: 'Get confidence your custom React hooks work properly with solid tests.'
-	},
-	{
-		title: 'Replace axios with a simple custom fetch wrapper',
-		preview:
-			"Axios can do a ton of stuff, but here's a simpler solution that can handle most use cases"
-	},
-	{
-		title: 'How to test custom React hooks',
-		preview: 'Get confidence your custom React hooks work properly with solid tests.'
-	},
-	{
-		title: 'Replace axios with a simple custom fetch wrapper',
-		preview:
-			"Axios can do a ton of stuff, but here's a simpler solution that can handle most use cases"
-	},
-	{
-		title: 'How to test custom React hooks',
-		preview: 'Get confidence your custom React hooks work properly with solid tests.'
-	}
-]
 
 export default class Blog extends Component {
 	render() {
@@ -54,11 +25,9 @@ export default class Blog extends Component {
 						<ul
 							css={css`
 								margin: 3em 0;
-
 								/* Grid Fallback */
 								display: flex;
 								flex-wrap: wrap;
-
 								/* Supports Grid */
 								display: grid;
 								grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
@@ -66,13 +35,16 @@ export default class Blog extends Component {
 								grid-gap: 1em;
 							`}
 						>
-							{/* <ul > /</ul> */}
-							{/* <Dump data={this.props.data} /> */}
-
 							{this.props.data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
-								<Card>
+								<Card key={id}>
 									{!!frontmatter.cover ? (
-										<Image sizes={frontmatter.cover.childImageSharp.sizes} />
+										<Link to={`/blog/${fields.slug}`}>
+											<Image
+												backgroundColor="green"
+												sizes={frontmatter.cover.childImageSharp.sizes}
+												withWebp
+											/>
+										</Link>
 									) : (
 										<ImagePlaceholder />
 									)}
@@ -106,17 +78,12 @@ export default class Blog extends Component {
 												color: #aaa;
 											`}
 										>
-											{/* {frontmatter.date} */}
-
 											{formatDistance(parseISO(frontmatter.date), new Date())}
-
-											{/* 6 min ago */}
 										</span>
 									</div>
 								</Card>
 							))}
 						</ul>
-						{/* </div> */}
 					</Wrapper>
 				</BlogContainer>
 			</>
@@ -139,11 +106,14 @@ const BlogContainer = styled.section`
 	padding: 2em 0;
 `
 const Image = styled(Img)`
+	width: 264px;
+	height: 132px;
+	background-size: cover;
 	border-radius: 5px;
 `
 
 export const query = graphql`
-	query SITE_INDEX_QUERY {
+	query SITE_BLOG_QUERY {
 		allMdx(
 			sort: { fields: [frontmatter___date], order: DESC }
 			filter: { frontmatter: { published: { eq: true } } }

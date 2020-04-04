@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'gatsby'
 
 import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/core'
 
 import ResetCSS from 'components/atoms/reset-css'
 import { colors } from 'styles'
