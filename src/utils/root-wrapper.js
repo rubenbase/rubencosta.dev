@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { css } from '@emotion/core'
-import { MDXProvider } from '@mdx-js/react'
-import { ThemeProvider } from 'context/ThemeContext'
-
+import { ThemeProvider } from 'theme-ui'
 import Code from 'components/organisms/code'
+
+import theme from './theme'
 
 const components = {
 	a: props => (
@@ -34,7 +34,7 @@ const components = {
 }
 
 export const wrapRootElement = ({ element }) => (
-	<ThemeProvider>
-		<MDXProvider components={components}>{element}</MDXProvider>
+	<ThemeProvider theme={theme} components={components}>
+		{element}
 	</ThemeProvider>
 )

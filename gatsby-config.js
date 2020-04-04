@@ -14,6 +14,7 @@ module.exports = {
 		siteLocale: `en_gb`
 	},
 	plugins: [
+		`gatsby-plugin-theme-ui`,
 		`gatsby-plugin-resolve-src`,
 		{
 			resolve: `gatsby-plugin-create-client-paths`,

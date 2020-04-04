@@ -71,7 +71,8 @@ const Code = props => {
 	)
 }
 const CopyCode = styled.button`
-	background-color: ${props => (props.isCopied ? colors.primary : 'white')};
+	background-color: ${props =>
+		console.log('alibaba', props) && (props.isCopied ? colors.primary : 'white')};
 	border: 0;
 	width: 50%;
 	height: 100%;
