@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import Loadable from '@loadable/component'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
@@ -11,7 +12,10 @@ import ResetCSS from 'components/atoms/reset-css'
 
 // import arrowImg from '../images/arrow.svg'
 import Footer from 'components/organisms/footer'
-import CookieOverlay from 'components/molecules/cookie-overlay'
+// import CookieOverlay from 'components/molecules/cookie-overlay'
+const CookieOverlay = Loadable(() => import('components/molecules/cookie-overlay'))
+
+// export default LoadableBuyButton
 // import ColorSwitch from 'components/molecules/color-switch'
 
 export default class IndexPage extends React.Component {
