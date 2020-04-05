@@ -50,6 +50,7 @@ export default function Footer() {
 									<FooterContactUs>
 										<SocialMediaLink>
 											<a
+												href="https://www.linkedin.com/in/rubencostam"
 												css={css`
 													color: white;
 													cursor: pointer;

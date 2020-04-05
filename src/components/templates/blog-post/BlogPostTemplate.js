@@ -4,7 +4,6 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from '@emotion/styled'
 import Hero from 'components/sections/hero'
 import { css } from '@emotion/core'
-import { colors } from 'styles'
 
 export default ({ data, pageContext }) => {
 	const { frontmatter, body } = data.mdx
@@ -39,14 +38,14 @@ export default ({ data, pageContext }) => {
 			>
 				<AuthorContainer>
 					<div
-						css={css`
-							/* background-color: ${colors.dark}; */
+						css={theme => css`
+							/* background-color: ${theme.colors.dark200}; */
 							width: 100%;
 							padding: 1em;
 							/* color: white; */
 							padding-top:3em;
 							border-bottom: .5px solid #aaa;
-							color: ${colors.dark};
+							color: ${theme.colors.dark200};
 							& h2 {
 								margin-bottom: 0.5em;
 							}
@@ -99,7 +98,7 @@ export default ({ data, pageContext }) => {
 								`}
 							>
 								<input
-									css={css`
+									css={theme => css`
 										font-family: 'Maison Neue', system-ui, -apple-system, BlinkMacSystemFont,
 											'Segoe UI', Helvetica, Arial, sans-serif;
 										font-size: 16px;
@@ -111,7 +110,7 @@ export default ({ data, pageContext }) => {
 										-ms-letter-spacing: -0.32px;
 										letter-spacing: -0.32px;
 										box-sizing: border-box;
-										color: ${colors.dark};
+										color: ${theme.colors.dark200};
 										background-color: transparent;
 										height: 100%;
 										-webkit-box-flex: 1;
@@ -307,7 +306,7 @@ const NavButton = styled.section`
 `
 
 const PostWrapper = styled.section`
-	background-color: ${colors.light1};
+	background-color: ${({ theme }) => theme.colors.light1};
 	padding-bottom: 1em;
 `
 const MetadataContainer = styled.section`

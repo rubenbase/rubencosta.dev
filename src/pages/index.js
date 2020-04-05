@@ -10,7 +10,6 @@ import Wrapper from 'components/layouts/wrapper'
 import ResetCSS from 'components/atoms/reset-css'
 
 // import arrowImg from '../images/arrow.svg'
-import { colors } from 'styles'
 import Footer from 'components/organisms/footer'
 import CookieOverlay from 'components/molecules/cookie-overlay'
 // import ColorSwitch from 'components/molecules/color-switch'
@@ -73,7 +72,16 @@ export default class IndexPage extends React.Component {
 							{this.props.data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
 								<Article key={id}>
 									<h3>
-										<Link to={`/blog/${fields.slug}`}>{frontmatter.title}</Link>
+										<Link
+											css={theme =>
+												css`
+													color: ${theme.colors.dark200};
+												`
+											}
+											to={`/blog/${fields.slug}`}
+										>
+											{frontmatter.title}
+										</Link>
 									</h3>
 									<p>{excerpt}</p>
 								</Article>
@@ -88,18 +96,18 @@ export default class IndexPage extends React.Component {
 						>
 							<Link
 								to="/blog"
-								css={css`
+								css={theme => css`
 									padding: 0.8em;
-									color: ${colors.dark} !important;
+									color: ${theme.colors.dark200};
 									text-transform: uppercase;
-									border: 1px dashed ${colors.dark};
+									border: 1px dashed ${theme.colors.dark200};
 									display: inline-block;
 									transition: all 0.4s ease 0s;
 
 									:hover {
-										color: #ffffff !important;
-										background: ${colors.dark};
-										border-color: ${colors.dark};
+										color: ${theme.colors.white};
+										background: ${theme.colors.dark200};
+										border-color: ${theme.colors.dark200};
 										transition: all 0.4s ease 0s;
 									}
 								`}
@@ -164,7 +172,7 @@ export default class IndexPage extends React.Component {
 }
 
 const SecondSection = styled.div`
-	background-color: #fff;
+	background-color: ${({ theme }) => theme.colors.white};
 `
 const Stats = styled.ul`
 	display: grid;
@@ -197,7 +205,7 @@ const ArticlesContainer = styled.div`
 	padding: 2em 1.5em;
 	max-width: 1230px;
 	margin: 0 auto;
-	background-color: rgb(247, 248, 252);
+	background-color: ${({ theme }) => theme.colors.light1};
 `
 const Article = styled.div`
 	padding: 1.5em;

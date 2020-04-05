@@ -6,7 +6,6 @@ import Wrapper from 'components/layouts/wrapper'
 
 // import Image from 'components/atoms/image'
 import background from '../../../images/gatsby-astronaut.png'
-import { colors } from 'styles'
 
 export default class Hero extends Component {
 	render() {
@@ -51,8 +50,8 @@ export default class Hero extends Component {
 const HeroWrapper = styled.div`
 	/* background: url(${background}) rgba(212, 31, 255, 0.99);
 	background-size: cover;
-  background-blend-mode: color-burn; */
-  background-color: ${colors.primary};
+	background-blend-mode: color-burn; */
+	background-color: ${({ theme }) => theme.colors.primary};
 `
 
 const Header = styled.header`
@@ -61,6 +60,7 @@ const Header = styled.header`
 `
 const Logo = styled(Link)`
 	/* font-weight: bold; */
+	color: ${({ theme }) => theme.colors.black};
 	font-family: 'Roboto';
 	font-weight: 500;
 	font-size: 26px;
@@ -69,6 +69,7 @@ const Nav = styled.ul`
 	display: flex;
 
 	li a {
+		color: ${({ theme }) => theme.colors.black};
 		font-size: 1.2em;
 		padding: 0 0.6em;
 	}

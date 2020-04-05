@@ -1,3 +1,5 @@
+import { lightModeColors, darkModeColors } from '../colors/colors'
+
 export default {
 	// fonts: {
 	// 	body: 'Georgia, Cambria, "Times New Roman", Times, serif',
@@ -13,21 +15,16 @@ export default {
 	// 	heading: 1.125
 	// },
 	colors: {
-		// 	text: '#392a25',
-		// 	muted: '#aaaaaa',
-		// 	foreground: '#ffffff',
-		// 	primary: '#92b955',
-		// 	secondary: '#9f8a6d'
-		background: '#ffffff',
+		...lightModeColors,
 		modes: {
 			dark: {
-				text: '#ffffff',
-				background: '#111111'
-				// foreground: '#333333',
-				// primary: '#1da1f2',
+				...darkModeColors
 			}
 		}
 	},
 	space: [0, 4, 8, 16, 32, 48],
 	breakpoints: ['40em', '64em', '80em']
 }
+
+// space: [0, 8, 16, 32, 64],
+// breakpoints: ['768px', '1025px', '1290px']

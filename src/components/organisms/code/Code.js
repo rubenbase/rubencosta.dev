@@ -3,7 +3,7 @@ import theme from 'prism-react-renderer/themes/nightOwl'
 import React, { useCallback, useState } from 'react'
 import styled from '@emotion/styled'
 import { copyToClipboard } from 'utils/copy-to-clipboard'
-import { colors } from 'styles'
+
 import { css } from '@emotion/core'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 
@@ -71,8 +71,8 @@ const Code = props => {
 	)
 }
 const CopyCode = styled.button`
-	background-color: ${props =>
-		console.log('alibaba', props) && (props.isCopied ? colors.primary : 'white')};
+	background-color: ${({ isCopied, theme }) => (isCopied ? theme.colors.primary : 'white')};
+	color: ${({ isCopied }) => (isCopied ? 'white' : 'black')};
 	border: 0;
 	width: 50%;
 	height: 100%;

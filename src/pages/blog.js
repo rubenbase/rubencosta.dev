@@ -7,7 +7,7 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
 import ResetCSS from 'components/atoms/reset-css'
-import { colors } from 'styles'
+
 import Hero from 'components/sections/hero'
 import Wrapper from 'components/layouts/wrapper'
 
@@ -53,7 +53,15 @@ export default class Blog extends Component {
 											margin: 1em 0;
 										`}
 									>
-										<Link to={`/blog/${fields.slug}`}> {frontmatter.title}</Link>
+										<Link
+											css={theme => css`
+												color: ${theme.colors.dark200};
+											`}
+											to={`/blog/${fields.slug}`}
+										>
+											{' '}
+											{frontmatter.title}
+										</Link>
 									</h4>
 									<div
 										css={css`
@@ -102,7 +110,7 @@ const Card = styled.li`
 	height: 220px;
 `
 const BlogContainer = styled.section`
-	background-color: ${colors.light1};
+	background-color: ${({ theme }) => theme.colors.light1};
 	padding: 2em 0;
 `
 const Image = styled(Img)`
