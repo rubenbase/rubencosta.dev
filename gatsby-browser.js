@@ -15,4 +15,9 @@
 // export { wrapPageElement };
 import { wrapRootElement as wrap } from 'utils/root-wrapper'
 
-export const wrapRootElement = wrap
+wrapRootElement = wrap
+
+export const onInitialClientRender = () => {
+	require('typeface-roboto')
+	require('typeface-montserrat')
+}
