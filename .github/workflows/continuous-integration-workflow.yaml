@@ -30,11 +30,18 @@ jobs:
       - run: ls -a
       # 4. Deploy the gatsby build to Netlify
       - run: pwd
-      - uses: netlify/actions/cli@master
+      # - uses: netlify/actions/cli@master
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      #   with:
+      #     # 5. "gatsby build" creates "public" folder, which is what we are deploying
+      #     args: deploy --dir=public --prod
+      #     secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
+      - uses: actions/checkout@master
+
+      - name: Publish
+        uses: netlify/actions/build@master
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-          # 5. "gatsby build" creates "public" folder, which is what we are deploying
-          args: deploy --dir=public --prod
-          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
