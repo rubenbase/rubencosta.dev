@@ -60,7 +60,7 @@ class CookieOverlay extends React.Component {
 							display: flex;
 							position: fixed;
 							z-index: 10;
-							max-width: 50%;
+							max-width: 80%;
 							left: auto;
 							right: 24px;
 							background-color: rgb(255, 255, 255);

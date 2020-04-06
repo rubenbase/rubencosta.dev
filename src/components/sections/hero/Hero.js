@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import { Link } from 'gatsby'
 import Wrapper from 'components/layouts/wrapper'
 
 // import Image from 'components/atoms/image'
 import background from '../../../images/gatsby-astronaut.png'
+import Navbar from 'components/molecules/navbar'
 
 export default class Hero extends Component {
 	render() {
@@ -14,18 +14,7 @@ export default class Hero extends Component {
 				<HeroWrapper>
 					<Wrapper>
 						<Header>
-							<Logo to="/">rubencosta</Logo>
-							<Nav>
-								<li>
-									<Link to="/blog">Blog</Link>
-								</li>
-								<li>
-									<Link to="/">Experience</Link>
-								</li>
-								<li>
-									<a href="https://github.com/rubenbase">Github</a>
-								</li>
-							</Nav>
+							<Navbar />
 						</Header>
 						<HeroContent>
 							<h1
@@ -58,22 +47,7 @@ const Header = styled.header`
 	display: flex;
 	justify-content: space-between;
 `
-const Logo = styled(Link)`
-	/* font-weight: bold; */
-	color: ${({ theme }) => theme.colors.black};
-	font-family: 'Roboto';
-	font-weight: 500;
-	font-size: 26px;
-`
-const Nav = styled.ul`
-	display: flex;
 
-	li a {
-		color: ${({ theme }) => theme.colors.black};
-		font-size: 1.2em;
-		padding: 0 0.6em;
-	}
-`
 const HeroContent = styled.div`
 	margin: 4em 0 2em;
 `
