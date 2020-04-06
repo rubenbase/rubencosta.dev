@@ -17,21 +17,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Check out the current repository code
-      - uses: actions/checkout@v1
+      # This step checks out a copy of your repository.
+      - uses: actions/checkout@v2
+      # This step references the directory that contains the action.
       # 3. https://github.com/actions/setup-node#usage
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+
+      - run: pwd
       - run: npm install
       # This triggers `gatsby build` script in "package.json"
       - run: npm run build
       # 4. Deploy the gatsby build to Netlify
+      - run: pwd
       - uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
           # 5. "gatsby build" creates "public" folder, which is what we are deploying
-          args: deploy --dir=../../public --prod
+          args: deploy --dir=${{ github.workspace }}/public/ --prod
           secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
