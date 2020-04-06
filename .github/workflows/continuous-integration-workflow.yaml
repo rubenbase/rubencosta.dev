@@ -27,6 +27,8 @@ jobs:
       - run: npm install
       # This triggers `gatsby build` script in "package.json"
       - run: npm run build
+      - run: ls -alh ../cache
+      - run: ls -a
       # 4. Deploy the gatsby build to Netlify
       - run: pwd
       - uses: netlify/actions/cli@master
