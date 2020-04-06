@@ -2,9 +2,14 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 
+import NavbarToggleButton from 'components/atoms/navbar-toggle-button'
+
 export default function Navbar() {
 	return (
 		<>
+			<div>
+				<NavbarToggleButton />
+			</div>
 			<Logo to="/">rubencosta</Logo>
 			<Nav>
 				<li>
