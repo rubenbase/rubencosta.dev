@@ -3,11 +3,24 @@ import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 
 import NavbarToggleButton from 'components/atoms/navbar-toggle-button'
+import NavbarDrawer from 'components/organisms/navbar-drawer'
+import { useNavbarIsOpenState, useNavbarIsOpenDispatch } from 'context/navbar-context'
 
 export default function Navbar() {
+	const { isOpen } = useNavbarIsOpenState()
+	const dispatch = useNavbarIsOpenDispatch()
 	return (
 		<>
 			<div>
+				<NavbarDrawer
+					closable={true}
+					visible={isOpen}
+					onClose={() => dispatch({ type: 'toggleIsOpen' })}
+				>
+					<h1>Hellooooo</h1>
+					<h1>Hellooooo</h1>
+					<h1>Hellooooo</h1>
+				</NavbarDrawer>
 				<NavbarToggleButton />
 			</div>
 			<Logo to="/">rubencosta</Logo>

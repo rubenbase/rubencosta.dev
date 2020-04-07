@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from '@emotion/styled'
+import { useNavbarIsOpenDispatch } from 'context/navbar-context'
 
 export default function NavbarToggleButton() {
+	const dispatch = useNavbarIsOpenDispatch()
+
 	return (
-		<ToggleButton>
+		<ToggleButton onClick={() => dispatch({ type: 'toggleIsOpen' })}>
 			<ToggleButtonLine />
 			<ToggleButtonLine />
 			<ToggleButtonLine />

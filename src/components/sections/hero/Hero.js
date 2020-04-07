@@ -7,33 +7,29 @@ import Wrapper from 'components/layouts/wrapper'
 import background from '../../../images/gatsby-astronaut.png'
 import Navbar from 'components/molecules/navbar'
 
-export default class Hero extends Component {
-	render() {
-		return (
-			<>
-				<HeroWrapper>
-					<Wrapper>
-						<Header>
-							<Navbar />
-						</Header>
-						<HeroContent>
-							<h1
-								css={css`
-									text-align: ${this.props.align ? this.props.align : 'left'};
-									line-height: 1.4em;
-									font-size: 3em;
-									margin: 0.67em 0;
-								`}
-							>
-								{this.props.title || 'I Build Awesome Experiences Through Quality Software'}
-							</h1>
-							<Subtitle>{this.props.subtitle || 'Cloud & Software Developer'}</Subtitle>
-						</HeroContent>
-					</Wrapper>
-				</HeroWrapper>
-			</>
-		)
-	}
+export default function Hero(props) {
+	return (
+		<HeroWrapper>
+			<Wrapper>
+				<Header>
+					<Navbar />
+				</Header>
+				<HeroContent>
+					<h1
+						css={css`
+							text-align: ${props.align ? props.align : 'left'};
+							line-height: 1.4em;
+							font-size: 3em;
+							margin: 0.67em 0;
+						`}
+					>
+						{props.title || 'I Build Awesome Experiences Through Quality Software'}
+					</h1>
+					<Subtitle>{props.subtitle || 'Cloud & Software Developer'}</Subtitle>
+				</HeroContent>
+			</Wrapper>
+		</HeroWrapper>
+	)
 }
 
 const HeroWrapper = styled.div`
