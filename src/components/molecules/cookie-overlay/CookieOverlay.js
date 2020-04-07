@@ -1,31 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 import { Link } from 'gatsby'
 import cookie from 'react-cookies'
 import { css } from '@emotion/core'
-
-const portalRoot = document.getElementById('cookie-overlay')
-
-class Portal extends React.Component {
-	constructor() {
-		super()
-		this.el = document.createElement('div')
-	}
-
-	componentDidMount = () => {
-		portalRoot.appendChild(this.el)
-	}
-
-	componentWillUnmount = () => {
-		portalRoot.removeChild(this.el)
-	}
-
-	render() {
-		const { children } = this.props
-		return ReactDOM.createPortal(children, this.el)
-	}
-}
+import Portal from 'components/atoms/portal'
 
 class CookieOverlay extends React.Component {
 	state = {
@@ -49,7 +27,7 @@ class CookieOverlay extends React.Component {
 	render() {
 		const { on } = this.state
 		return (
-			<Portal>
+			<Portal name="cookie-overlay">
 				{on ? (
 					<div
 						css={css`
