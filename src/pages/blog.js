@@ -48,7 +48,9 @@ export default class Blog extends Component {
 												/>
 											</Link>
 										) : (
-											<ImagePlaceholder />
+											<Link to={`/blog/${fields.slug}`}>
+												<ImagePlaceholder />
+											</Link>
 										)}
 										<h4
 											css={css`
@@ -103,24 +105,34 @@ export default class Blog extends Component {
 }
 
 const ImagePlaceholder = styled.div`
-	width: 264px;
-	height: 132px;
 	background-color: #eaeaea;
+	height: 132px;
+
+	@media (min-width: 575px) {
+		width: 264px;
+		height: 132px;
+	}
 `
 
 const Card = styled.li`
-	width: 264px;
-	height: 220px;
+	@media (min-width: 575px) {
+		width: 264px;
+		height: 220px;
+	}
 `
 const BlogContainer = styled.section`
 	background-color: ${({ theme }) => theme.colors.light1};
 	padding: 2em 0;
 `
 const Image = styled(Img)`
-	width: 264px;
 	height: 132px;
 	background-size: cover;
 	border-radius: 5px;
+
+	@media (min-width: 575px) {
+		width: 264px;
+		width: 264px;
+	}
 `
 
 export const query = graphql`

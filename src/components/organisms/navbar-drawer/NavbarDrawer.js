@@ -219,25 +219,7 @@ export default class NavbarDrawer extends React.Component {
 	render() {
 		return (
 			<Portal name="navbar-overlay">
-				<div
-					css={css`
-						-webkit-box-align: center;
-						align-items: center;
-						bottom: 24px;
-						box-shadow: rgba(0, 0, 0, 0.1) 0px 12px 24px;
-						display: flex;
-						position: fixed;
-						z-index: 10;
-						max-width: 80%;
-						left: auto;
-						right: 24px;
-						background-color: rgb(255, 255, 255);
-						color: rgb(4, 13, 20);
-						padding: 12px 12px 12px 24px;
-						border-radius: 8px;
-						margin: auto;
-					`}
-				>
+				<div>
 					{/* <DrawerContext.Consumer> */}
 					{/* {this.renderProvider()} */}
 					{/* </DrawerContext.Consumer> */}
