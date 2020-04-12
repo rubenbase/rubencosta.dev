@@ -32,7 +32,9 @@ export default function Navbar() {
 					<Link to="/">Experience</Link>
 				</li>
 				<li>
-					<a href="https://github.com/rubenbase">Github</a>
+					<a href="https://github.com/rubenbase" target="_blank">
+						Github
+					</a>
 				</li>
 			</Nav>
 		</>

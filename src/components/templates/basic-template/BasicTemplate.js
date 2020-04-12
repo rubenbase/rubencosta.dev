@@ -1,17 +1,12 @@
 import React from 'react'
-import {
-	NavbarIsOpenProvider,
-	useNavbarIsOpenState,
-	useNavbarIsOpenDispatch
-} from 'context/navbar-context'
-import NavbarDrawer from 'components/organisms/navbar-drawer'
+import { NavbarIsOpenProvider } from 'context/navbar-context'
 import Hero from 'components/sections/hero'
 
-export default function BasicTemplate({ children }) {
+export default function BasicTemplate(props) {
 	return (
 		<NavbarIsOpenProvider>
-			<Hero />
-			{children}
+			<Hero align={props.align} title={props.title} subtitle={props.subtitle} />
+			{props.children}
 		</NavbarIsOpenProvider>
 	)
 }

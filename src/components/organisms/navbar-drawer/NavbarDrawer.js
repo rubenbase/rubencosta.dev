@@ -145,60 +145,103 @@ export default class NavbarDrawer extends React.Component {
 		// })
 		return (
 			// <DrawerContext.Provider value={this}>
-			<RcDrawer
-				handler={false}
-				// {...omit(rest, [
-				// 	'zIndex',
-				// 	'style',
-				// 	'closable',
-				// 	'destroyOnClose',
-				// 	'drawerStyle',
-				// 	'headerStyle',
-				// 	'bodyStyle',
-				// 	'footerStyle',
-				// 	'footer',
-				// 	'locale',
-				// 	'title',
-				// 	'push',
-				// 	'visible',
-				// 	'getPopupContainer',
-				// 	'rootPrefixCls',
-				// 	'getPrefixCls',
-				// 	'renderEmpty',
-				// 	'csp',
-				// 	'pageHeader',
-				// 	'autoInsertSpaceInButton'
-				// ])}
-				{...offsetStyle}
-				prefixCls={prefixCls}
-				open={this.props.visible}
-				showMask={mask}
-				placement={placement}
-				// style={this.getRcDrawerStyle()}
-				// className={drawerClassName}
-			>
-				{this.renderBody()}
-				{/* <Navbar>
-					<ul css={{ margin: '0' }}>
-						<li>
-							<a>Example1</a>
-						</li>
-						<li>
-							<a>Example2</a>
-						</li>
-					</ul>
-				</Navbar> */}
-				{/* </DrawerContext.Provider> */}
-			</RcDrawer>
+			// <RcDrawer
+			// 	handler={false}
+			// 	// {...omit(rest, [
+			// 	// 	'zIndex',
+			// 	// 	'style',
+			// 	// 	'closable',
+			// 	// 	'destroyOnClose',
+			// 	// 	'drawerStyle',
+			// 	// 	'headerStyle',
+			// 	// 	'bodyStyle',
+			// 	// 	'footerStyle',
+			// 	// 	'footer',
+			// 	// 	'locale',
+			// 	// 	'title',
+			// 	// 	'push',
+			// 	// 	'visible',
+			// 	// 	'getPopupContainer',
+			// 	// 	'rootPrefixCls',
+			// 	// 	'getPrefixCls',
+			// 	// 	'renderEmpty',
+			// 	// 	'csp',
+			// 	// 	'pageHeader',
+			// 	// 	'autoInsertSpaceInButton'
+			// 	// ])}
+			// 	// {...offsetStyle}
+			// 	prefixCls={prefixCls}
+			// 	// open={this.props.visible}
+			// 	// getContainer={document.getElementById('navbar-overlay')}
+			// 	// showMask={mask}
+			// 	// placement={placement}
+			// 	// style={this.getRcDrawerStyle()}
+			// 	// className={drawerClassName}
+			// >
+			// 	{this.renderBody()}
+			// 	{/* <Navbar>
+			// 		<ul css={{ margin: '0' }}>
+			// 			<li>
+			// 				<a>Example1</a>
+			// 			</li>
+			// 			<li>
+			// 				<a>Example2</a>
+			// 			</li>
+			// 		</ul>
+			// 	</Navbar> */}
+			// 	{/* </DrawerContext.Provider> */}
+			// </RcDrawer>
+			<div className="sidebar">
+				<nav className="menu">
+					<li>
+						<a href="#">Home</a>
+					</li>
+					<li>
+						<a href="#">About</a>
+					</li>
+					<li>
+						<a href="#">Services</a>
+					</li>
+					<li>
+						<a href="#">Pricing</a>
+					</li>
+					<li>
+						<a href="#">Contact</a>
+					</li>
+					<li>
+						<a href="#">Blog</a>
+					</li>
+				</nav>
+			</div>
 		)
 	}
 
 	render() {
 		return (
 			<Portal name="navbar-overlay">
-				{/* <DrawerContext.Consumer> */}
-				{this.renderProvider()}
-				{/* </DrawerContext.Consumer> */}
+				<div
+					css={css`
+						-webkit-box-align: center;
+						align-items: center;
+						bottom: 24px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 12px 24px;
+						display: flex;
+						position: fixed;
+						z-index: 10;
+						max-width: 80%;
+						left: auto;
+						right: 24px;
+						background-color: rgb(255, 255, 255);
+						color: rgb(4, 13, 20);
+						padding: 12px 12px 12px 24px;
+						border-radius: 8px;
+						margin: auto;
+					`}
+				>
+					{/* <DrawerContext.Consumer> */}
+					{/* {this.renderProvider()} */}
+					{/* </DrawerContext.Consumer> */}
+				</div>
 			</Portal>
 		)
 	}

@@ -12,88 +12,91 @@ import Hero from 'components/sections/hero'
 import Wrapper from 'components/layouts/wrapper'
 
 import Img from 'gatsby-image'
+import BasicTemplate from 'components/templates/basic-template'
 
 export default class Blog extends Component {
 	render() {
 		return (
 			<>
 				<ResetCSS />
-				<Hero title="Blog" subtitle=" " />
-				<BlogContainer>
-					<Wrapper>
-						<h2>Latest articles</h2>
-						<ul
-							css={css`
-								margin: 3em 0;
-								/* Grid Fallback */
-								display: flex;
-								flex-wrap: wrap;
-								/* Supports Grid */
-								display: grid;
-								grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
-								grid-auto-rows: auto;
-								grid-gap: 1em;
-							`}
-						>
-							{this.props.data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
-								<Card key={id}>
-									{!!frontmatter.cover ? (
-										<Link to={`/blog/${fields.slug}`}>
-											<Image
-												backgroundColor="green"
-												sizes={frontmatter.cover.childImageSharp.sizes}
-												withWebp
-											/>
-										</Link>
-									) : (
-										<ImagePlaceholder />
-									)}
-									<h4
-										css={css`
-											margin: 1em 0;
-										`}
-									>
-										<Link
-											css={theme => css`
-												color: ${theme.colors.dark200};
-											`}
-											to={`/blog/${fields.slug}`}
-										>
-											{' '}
-											{frontmatter.title}
-										</Link>
-									</h4>
-									<div
-										css={css`
-											display: flex;
-										`}
-									>
-										<p
+				<BasicTemplate title="Blog" subtitle=" ">
+					{/* <Hero title="Blog" subtitle=" " /> */}
+					<BlogContainer>
+						<Wrapper>
+							<h2>Latest articles</h2>
+							<ul
+								css={css`
+									margin: 3em 0;
+									/* Grid Fallback */
+									display: flex;
+									flex-wrap: wrap;
+									/* Supports Grid */
+									display: grid;
+									grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
+									grid-auto-rows: auto;
+									grid-gap: 1em;
+								`}
+							>
+								{this.props.data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
+									<Card key={id}>
+										{!!frontmatter.cover ? (
+											<Link to={`/blog/${fields.slug}`}>
+												<Image
+													backgroundColor="green"
+													sizes={frontmatter.cover.childImageSharp.sizes}
+													withWebp
+												/>
+											</Link>
+										) : (
+											<ImagePlaceholder />
+										)}
+										<h4
 											css={css`
-												text-rendering: optimizeLegibility;
-												color: #aaa;
-												::after {
-													content: '\u2219';
-													margin: 0 4px;
-												}
+												margin: 1em 0;
 											`}
 										>
-											Performance
-										</p>
-										<span
+											<Link
+												css={theme => css`
+													color: ${theme.colors.dark200};
+												`}
+												to={`/blog/${fields.slug}`}
+											>
+												{' '}
+												{frontmatter.title}
+											</Link>
+										</h4>
+										<div
 											css={css`
-												text-rendering: optimizeLegibility;
-												color: #aaa;
+												display: flex;
 											`}
 										>
-											{formatDistance(parseISO(frontmatter.date), new Date())}
-										</span>
-									</div>
-								</Card>
-							))}
-						</ul>
-					</Wrapper>
-				</BlogContainer>
+											<p
+												css={css`
+													text-rendering: optimizeLegibility;
+													color: #aaa;
+													::after {
+														content: '\u2219';
+														margin: 0 4px;
+													}
+												`}
+											>
+												Performance
+											</p>
+											<span
+												css={css`
+													text-rendering: optimizeLegibility;
+													color: #aaa;
+												`}
+											>
+												{formatDistance(parseISO(frontmatter.date), new Date())}
+											</span>
+										</div>
+									</Card>
+								))}
+							</ul>
+						</Wrapper>
+					</BlogContainer>
+				</BasicTemplate>
 			</>
 		)
 	}
