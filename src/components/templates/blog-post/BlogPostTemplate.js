@@ -229,9 +229,9 @@ export default ({ data, pageContext }) => {
 										>
 											Previous article
 										</h4>
-										<NavButton>
-											<Link to={'/blog' + previous.fields.slug}>{previous.frontmatter.title}</Link>
-										</NavButton>
+										<Link to={'/blog' + previous.fields.slug}>
+											<NavButton>{previous.frontmatter.title}</NavButton>
+										</Link>
 									</NavButtonContainer>
 								) : (
 									<h4
@@ -255,9 +255,9 @@ export default ({ data, pageContext }) => {
 										>
 											Next article
 										</h4>
-										<NavButton>
-											<Link to={'/blog' + next.fields.slug}>{next.frontmatter.title}</Link>
-										</NavButton>
+										<Link to={'/blog' + next.fields.slug}>
+											<NavButton>{next.frontmatter.title}</NavButton>
+										</Link>
 									</NavButtonContainer>
 								) : (
 									<h4
