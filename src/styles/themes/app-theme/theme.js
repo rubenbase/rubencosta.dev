@@ -1,10 +1,10 @@
 import { lightModeColors, darkModeColors } from '../colors/colors'
 
 export default {
-	// fonts: {
-	// 	body: 'Georgia, Cambria, "Times New Roman", Times, serif',
-	// 	heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-	// },
+	fonts: {
+		body: 'Roboto, Georgia, Cambria, "Times New Roman", Times, serif',
+		heading: 'Montserrat, Arial, -apple-system, sans-serif'
+	},
 	// fontSizes: [12, 14, 16, 20, 24, 32, 48],
 	// fontWeights: {
 	// 	body: 400,
