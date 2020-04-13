@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
+import { Link } from 'gatsby'
 
 export default function Footer() {
 	return (
@@ -14,34 +15,34 @@ export default function Footer() {
 									<FooterLinksList>
 										<FooterLink>
 											<UnstyledAnchor>
-												<Span>Stocks</Span>
+												<Span>Contact</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										<FooterLink>
 											<UnstyledAnchor>
-												<Span>Stocks</Span>
+												<Span>Privacy policy</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										<FooterLink>
 											<UnstyledAnchor>
-												<Span>Stocks</Span>
+												<Span>Terms and conditions</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										<FooterLink>
 											<UnstyledAnchor>
-												<Span>Stocks</Span>
+												<Span>Blog</Span>
+											</UnstyledAnchor>
+										</FooterLink>
+										{/* <FooterLink>
+											<UnstyledAnchor>
+												<Span>...</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										<FooterLink>
 											<UnstyledAnchor>
-												<Span>Stocks</Span>
+												<Span>...</Span>
 											</UnstyledAnchor>
-										</FooterLink>
-										<FooterLink>
-											<UnstyledAnchor>
-												<Span>Stocks</Span>
-											</UnstyledAnchor>
-										</FooterLink>
+										</FooterLink> */}
 									</FooterLinksList>
 								</FooterLinksContainer>
 							</Column>
@@ -75,14 +76,34 @@ export default function Footer() {
 								</FooterLinksContainer>
 							</Column>
 						</Row>
-						<Row>
+						{/* <Row>
 							<Column>a</Column>
 							<Column>b</Column>
-						</Row>
-						<hr />
-						<Row>This is the Footer</Row>
+						</Row> */}
+						<hr
+							css={css`
+								border-top: 1px solid rgba(204, 204, 204, 0.25);
+							`}
+						/>
+						{/* <Row>This is the Footer</Row> */}
 						<Row>
-							<span>2020 Ruben Costa</span>
+							<span>
+								<span
+									css={css`
+										font-weight: 700;
+									`}
+								>
+									2020
+								</span>{' '}
+								— Made with ❤️ by{' '}
+								<span
+									css={css`
+										font-weight: 700;
+									`}
+								>
+									Ruben Costa
+								</span>
+							</span>
 						</Row>
 					</ThemeableFooter>
 				</LayoutContainer>
@@ -156,7 +177,7 @@ const FooterLinksList = styled.ul`
 const FooterLink = styled.li`
 	margin-top: 12px;
 `
-const UnstyledAnchor = styled.a`
+const UnstyledAnchor = styled(Link)`
 	color: inherit;
 	-webkit-text-decoration: none;
 	text-decoration: none;
