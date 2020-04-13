@@ -11,7 +11,6 @@ import Wrapper from 'components/layouts/wrapper'
 import ResetCSS from 'components/atoms/reset-css'
 
 // import arrowImg from '../images/arrow.svg'
-import Footer from 'components/organisms/footer'
 
 import BasicTemplate from 'components/templates/basic-template'
 
@@ -185,7 +184,6 @@ export default class IndexPage extends React.Component {
 						/>
 					</CarousalContainer> */}
 					</SecondSection>
-					<Footer />
 				</BasicTemplate>
 			</Fragment>
 		)
