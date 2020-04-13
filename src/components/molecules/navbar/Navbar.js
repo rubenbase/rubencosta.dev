@@ -11,7 +11,9 @@ export default function Navbar() {
 	const dispatch = useNavbarIsOpenDispatch()
 	return (
 		<>
+			{/*
 			<div>
+				 TODO: Finish navbar
 				<NavbarDrawer
 					closable={true}
 					visible={isOpen}
@@ -21,15 +23,16 @@ export default function Navbar() {
 					<h1>Hellooooo</h1>
 					<h1>Hellooooo</h1>
 				</NavbarDrawer>
-				<NavbarToggleButton />
+				<NavbarToggleButton /> 
 			</div>
+				*/}
 			<Logo to="/">rubencosta</Logo>
 			<Nav>
 				<li>
 					<Link to="/blog">Blog</Link>
 				</li>
 				<li>
-					<Link to="/">Experience</Link>
+					<Link to="/about">About</Link>
 				</li>
 				<li>
 					<a href="https://github.com/rubenbase" target="_blank">
