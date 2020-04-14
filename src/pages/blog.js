@@ -109,7 +109,6 @@ const ImagePlaceholder = styled.div`
 	height: 132px;
 
 	@media (min-width: 575px) {
-		width: 264px;
 		height: 132px;
 	}
 `
@@ -130,8 +129,7 @@ const Image = styled(Img)`
 	border-radius: 5px;
 
 	@media (min-width: 575px) {
-		width: 264px;
-		width: 264px;
+		height: 132px;
 	}
 `
 
