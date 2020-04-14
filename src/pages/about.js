@@ -33,13 +33,12 @@ export default class About extends Component {
 								<div
 									css={css`
 										width: 100%;
-										margin-bottom: 2em;
+										margin: 2em 0;
 										order: 2;
 										flex: 1;
 										margin-top: 2em;
 										@media (min-width: 768px) {
-											margin-top: 0em;
-											padding: 0 5%;
+											padding: 0 2% 0 0;
 											order: 1;
 											width: 60%;
 											max-width: 480px;
@@ -61,7 +60,7 @@ export default class About extends Component {
 											👋 Hello!
 										</Heading>
 										<span>
-											<b>I'm Ruben Costa</b>, a software developer based in <b>London, UK</b> who
+											I'm <b>Ruben Costa</b>, a software developer based in <b>London, UK</b> who
 											enjoys building things that live on the internet. I develop exceptional
 											websites and web apps that provide intuitive, pixel-perfect user interfaces
 											with efficient and modern backends.
@@ -90,10 +89,8 @@ export default class About extends Component {
 								</div>
 								<div
 									css={css`
-										/* margin-left: 60px; */
 										display: flex;
 										flex: 1;
-										padding: 0 10%;
 										justify-content: center;
 										align-items: center;
 										order: 1;
@@ -118,7 +115,9 @@ export default class About extends Component {
 										css={css`
 											position: relative;
 											width: 100%;
+											height: 390px;
 											@media (min-width: 768px) {
+												height: auto;
 												margin-top: 150px;
 											}
 										`}
@@ -126,6 +125,7 @@ export default class About extends Component {
 										<Img
 											css={css`
 												width: 100%;
+												height: 100%;
 											`}
 											fluid={this.props.data.file.childImageSharp.fluid}
 											alt="This is a picture of my face."
@@ -149,11 +149,19 @@ export default class About extends Component {
 											<Heading
 												css={css`
 													position: absolute;
-													bottom: 15%;
+													bottom: 10%;
 													left: 1em;
 												`}
 											>
-												Los Angeles
+												24
+												<br />
+												<span
+													css={css`
+														font-size: 1.2em;
+													`}
+												>
+													Spain 🇪🇸
+												</span>
 											</Heading>
 										</div>
 									</div>
@@ -163,6 +171,77 @@ export default class About extends Component {
 							{/* <Button mr={2}>Beep</Button> */}
 						</Wrapper>
 					</AboutContainer>
+					<ExperienceContainer>
+						<Wrapper>
+							<Section>
+								<h2
+									css={css`
+										text-align: center;
+										position: relative;
+										margin: 2em 0;
+										::before {
+											content: '';
+											position: absolute;
+											height: 5px;
+											width: 30px;
+											background-color: rgb(237, 50, 185);
+											top: -0.3em;
+										}
+									`}
+								>
+									My Experience
+								</h2>
+								<div
+									css={css`
+										display: flex;
+										align-items: flex-start;
+										position: relative;
+									`}
+								>
+									<ExperienceList>
+										<ExperienceItem>
+											<CompanyButton>
+												<span>Vodafone</span>
+											</CompanyButton>
+										</ExperienceItem>
+										<ExperienceItem>
+											<CompanyButton>
+												<span>Hack a BOS</span>
+											</CompanyButton>
+										</ExperienceItem>
+										<ExperienceItem>
+											<CompanyButton>
+												<span>Blue Ocean Start</span>
+											</CompanyButton>
+										</ExperienceItem>
+										<ExperienceItem>
+											<CompanyButton>
+												<span>Domesting</span>
+											</CompanyButton>
+										</ExperienceItem>
+									</ExperienceList>
+									<div
+										css={css`
+											position: relative;
+											width: 100%;
+											height: auto;
+											padding-top: 12px;
+											padding-left: 30px;
+										`}
+									>
+										Magna mollit consectetur laborum ullamco ut ut duis. Sunt elit sit officia aute
+										culpa ex reprehenderit ad nostrud ex ullamco incididunt. Amet esse amet ipsum
+										mollit quis amet non exercitation nostrud ex duis reprehenderit in. Eu consequat
+										reprehenderit magna est deserunt ullamco veniam exercitation. Id consequat
+										pariatur proident ullamco velit labore. Ipsum ipsum veniam in dolor consectetur.
+										Cillum aute pariatur commodo aliqua laborum esse. Enim anim veniam dolor
+										officia. In laborum officia voluptate commodo proident dolor et reprehenderit
+										adipisicing deserunt.
+									</div>
+								</div>
+							</Section>
+						</Wrapper>
+					</ExperienceContainer>
 				</BasicTemplate>
 			</>
 		)
@@ -172,7 +251,11 @@ export default class About extends Component {
 const AboutContainer = styled.div`
 	background-color: ${({ theme }) => theme.colors.black};
 	color: white;
-	padding: 2em 0;
+	padding: 2em 0 3em 0;
+
+	@media (min-width: 1115px) {
+		padding-bottom: 7em;
+	}
 `
 
 const LatestTechs = styled.ul`
@@ -197,6 +280,59 @@ const LatestTechsItem = styled.li`
 		color: #21ce99;
 		font-size: 18px;
 		line-height: 12px;
+	}
+`
+
+const ExperienceContainer = styled.div`
+	background-color: ${({ theme }) => theme.colors.light2};
+	color: ${({ theme }) => theme.colors.dark1};
+	padding: 2em 0;
+`
+
+const Section = styled.section`
+	position: relative;
+	max-width: 700px;
+	margin: 0px auto;
+`
+
+const ExperienceList = styled.ul`
+	display: block;
+	position: relative;
+	width: max-content;
+	/* background-color: ${({ theme }) => theme.colors.black}; */
+	padding: 1em 0;
+	margin: 0px;
+	list-style: none;
+
+	&:first-child {
+	}
+`
+const ExperienceItem = styled.li`
+	background-color: ${({ theme }) => theme.colors.black};
+	margin: 0;
+	height: 65px;
+`
+const CompanyButton = styled.button`
+	text-decoration-skip-ink: auto;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	text-align: left;
+	white-space: nowrap;
+	font-size: 1em;
+	color: ${({ theme }) => theme.colors.white};
+	text-decoration: none;
+	padding: 3px 20px 3px;
+	transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+	border: none;
+	background-color: transparent;
+	&:hover {
+		background-color: ${({ theme }) => theme.colors.primary};
+		color: ${({ theme }) => theme.colors.black};
 	}
 `
 
