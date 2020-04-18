@@ -46,7 +46,7 @@ export default function Navbar() {
 
 const Logo = styled(Link)`
 	/* font-weight: bold; */
-	color: ${({ theme }) => theme.colors.black};
+	color: ${({ theme }) => theme.colors.dark100};
 	font-family: 'Roboto';
 	font-weight: 500;
 	font-size: 26px;
@@ -56,7 +56,7 @@ const Nav = styled.ul`
 	display: flex;
 
 	li a {
-		color: ${({ theme }) => theme.colors.black};
+		color: ${({ theme }) => theme.colors.dark100};
 		font-size: 1.2em;
 		padding: 0 0.6em;
 	}
