@@ -10,6 +10,7 @@ import BasicTemplate from 'components/templates/basic-template'
 import Wrapper from 'components/layouts/wrapper'
 
 import { Flex, Box, Button, Text, Heading } from 'theme-ui'
+import Tabs from 'components/organisms/tabs'
 
 export default class About extends Component {
 	render() {
@@ -198,46 +199,24 @@ export default class About extends Component {
 										position: relative;
 									`}
 								>
-									<ExperienceList>
-										<ExperienceItem>
-											<CompanyButton>
-												<span>Vodafone</span>
-											</CompanyButton>
-										</ExperienceItem>
-										<ExperienceItem>
-											<CompanyButton>
-												<span>Hack a BOS</span>
-											</CompanyButton>
-										</ExperienceItem>
-										<ExperienceItem>
-											<CompanyButton>
-												<span>Blue Ocean Start</span>
-											</CompanyButton>
-										</ExperienceItem>
-										<ExperienceItem>
-											<CompanyButton>
-												<span>Domesting</span>
-											</CompanyButton>
-										</ExperienceItem>
-									</ExperienceList>
-									<div
-										css={css`
-											position: relative;
-											width: 100%;
-											height: auto;
-											padding-top: 12px;
-											padding-left: 30px;
-										`}
+									<Tabs
+										activeTab={{
+											id: 'tab1'
+										}}
 									>
-										Magna mollit consectetur laborum ullamco ut ut duis. Sunt elit sit officia aute
-										culpa ex reprehenderit ad nostrud ex ullamco incididunt. Amet esse amet ipsum
-										mollit quis amet non exercitation nostrud ex duis reprehenderit in. Eu consequat
-										reprehenderit magna est deserunt ullamco veniam exercitation. Id consequat
-										pariatur proident ullamco velit labore. Ipsum ipsum veniam in dolor consectetur.
-										Cillum aute pariatur commodo aliqua laborum esse. Enim anim veniam dolor
-										officia. In laborum officia voluptate commodo proident dolor et reprehenderit
-										adipisicing deserunt.
-									</div>
+										<Tabs.Tab id="tab1" title="Vodafone">
+											Vodafone
+										</Tabs.Tab>
+										<Tabs.Tab id="tab2" title="Hack a BOS">
+											Hack a BOS
+										</Tabs.Tab>
+										<Tabs.Tab id="tab3" title="Blue Ocean Start">
+											Blue Ocean Start
+										</Tabs.Tab>
+										<Tabs.Tab id="tab4" title="Domesting">
+											Domesting
+										</Tabs.Tab>
+									</Tabs>
 								</div>
 							</Section>
 						</Wrapper>
@@ -303,9 +282,6 @@ const ExperienceList = styled.ul`
 	padding: 1em 0;
 	margin: 0px;
 	list-style: none;
-
-	&:first-child {
-	}
 `
 const ExperienceItem = styled.li`
 	background-color: ${({ theme }) => theme.colors.black};
