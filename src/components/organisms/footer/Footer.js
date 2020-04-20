@@ -14,32 +14,32 @@ export default function Footer() {
 								<FooterLinksContainer>
 									<FooterLinksList>
 										<FooterLink>
-											<UnstyledAnchor>
+											<UnstyledAnchor to={'/'}>
 												<Span>Contact</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										<FooterLink>
-											<UnstyledAnchor>
+											<UnstyledAnchor to={'/'}>
 												<Span>Privacy policy</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										<FooterLink>
-											<UnstyledAnchor>
+											<UnstyledAnchor to={'/'}>
 												<Span>Terms and conditions</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										<FooterLink>
-											<UnstyledAnchor>
+											<UnstyledAnchor to={'/'}>
 												<Span>Blog</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										{/* <FooterLink>
-											<UnstyledAnchor>
+											<UnstyledAnchor to={'/'}>
 												<Span>...</Span>
 											</UnstyledAnchor>
 										</FooterLink>
 										<FooterLink>
-											<UnstyledAnchor>
+											<UnstyledAnchor to={'/'}>
 												<Span>...</Span>
 											</UnstyledAnchor>
 										</FooterLink> */}
