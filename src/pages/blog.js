@@ -115,7 +115,6 @@ const ImagePlaceholder = styled.div`
 
 const Card = styled.li`
 	@media (min-width: 575px) {
-		width: 264px;
 		height: 220px;
 	}
 `
