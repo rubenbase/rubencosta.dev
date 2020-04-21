@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
+import ColorSwitch from 'components/molecules/color-switch'
 
 export default function Footer() {
 	return (
@@ -70,8 +71,7 @@ export default function Footer() {
 												</svg>
 											</a>
 										</SocialMediaLink>
-										<SocialMediaLink></SocialMediaLink>
-										<SocialMediaLink></SocialMediaLink>
+										<ColorSwitch />
 									</FooterContactUs>
 								</FooterLinksContainer>
 							</Column>

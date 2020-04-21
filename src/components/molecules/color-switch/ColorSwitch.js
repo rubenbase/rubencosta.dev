@@ -11,19 +11,19 @@ const ColorSwitch = () => {
 					setColorMode(colorMode === 'light' ? 'dark' : 'light')
 				}}
 				sx={{
-					backgroundColor: 'secondary',
-					borderRadius: '100em',
+					backgroundColor: '#fff',
+					borderRadius: '1em',
 					border: 0,
-					color: 'foreground',
+					color: 'black',
 					fontFamily: 'heading',
 					fontSize: [0, 1],
 					fontWeight: 'bold',
 					margin: 3,
-					px: 4,
-					py: 3
+					px: 3
+					// py: 3
 				}}
 			>
-				Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+				{colorMode === 'light' ? 'Dark' : 'Light'} theme
 			</button>
 		</div>
 	)

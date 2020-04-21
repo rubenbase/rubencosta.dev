@@ -18,7 +18,6 @@ const CookieOverlay = Loadable(() => import('components/molecules/cookie-overlay
 const NavbarDrawer = Loadable(() => import('components/organisms/navbar-drawer'))
 
 // export default LoadableBuyButton
-// import ColorSwitch from 'components/molecules/color-switch'
 
 export default class IndexPage extends React.Component {
 	state = {
@@ -40,7 +39,6 @@ export default class IndexPage extends React.Component {
 		return (
 			<Fragment>
 				<ResetCSS />
-				{/* <ColorSwitch /> */}
 				<CookieOverlay />
 
 				<BasicTemplate>
