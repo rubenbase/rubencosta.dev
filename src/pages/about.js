@@ -11,6 +11,7 @@ import Wrapper from 'components/layouts/wrapper'
 
 import { Flex, Box, Button, Text, Heading } from 'theme-ui'
 import Tabs from 'components/organisms/tabs'
+import { companiesData } from 'data/about.data'
 
 export default class About extends Component {
 	render() {
@@ -197,24 +198,80 @@ export default class About extends Component {
 										display: flex;
 										align-items: flex-start;
 										position: relative;
+										flex-direction: column;
+										@media (min-width: 768px) {
+											flex-direction: row;
+										}
 									`}
 								>
 									<Tabs
 										activeTab={{
-											id: 'tab1'
+											id: companiesData[0].id
 										}}
 									>
+										{companiesData.map(company => (
+											<Tabs.Tab id={company.id} title={company.title}>
+												<TabContainer>
+													<Box>
+														<Heading as="h3">{company.position}</Heading>
+													</Box>
+													<Flex pt={2}>
+														<Text>
+															Sep 2019 — Present •{' '}
+															<span
+																css={css`
+																	opacity: 0.7;
+																`}
+															>
+																9 months
+															</span>
+														</Text>
+													</Flex>
+													<Box>
+														<Text>{company.location}</Text>
+													</Box>
+													<Box pt={4}>
+														<Text>{company.description}</Text>
+													</Box>
+												</TabContainer>
+											</Tabs.Tab>
+										))}
 										<Tabs.Tab id="tab1" title="Vodafone">
-											Vodafone
+											<TabContainer>
+												<Box>
+													<Heading as="h3">Software Engineer</Heading>
+												</Box>
+												<Flex pt={2}>
+													<Text>
+														Sep 2019 — Present •{' '}
+														<span
+															css={css`
+																opacity: 0.7;
+															`}
+														>
+															9 months
+														</span>
+													</Text>
+												</Flex>
+												<Box>
+													<Text>London</Text>
+												</Box>
+												<Box pt={4}>
+													<Text>
+														Responsibilities: SCRUM, SASS, React, Typescript, Nodejs, Jest, Enzyme,
+														Devops, AWS
+													</Text>
+												</Box>
+											</TabContainer>
 										</Tabs.Tab>
 										<Tabs.Tab id="tab2" title="Hack a BOS">
-											Hack a BOS
+											<TabContainer>Hack a BOS</TabContainer>
 										</Tabs.Tab>
 										<Tabs.Tab id="tab3" title="Blue Ocean Start">
-											Blue Ocean Start
+											<TabContainer>Blue Ocean Start</TabContainer>
 										</Tabs.Tab>
 										<Tabs.Tab id="tab4" title="Domesting">
-											Domesting
+											<TabContainer>Domesting</TabContainer>
 										</Tabs.Tab>
 									</Tabs>
 								</div>
@@ -226,6 +283,12 @@ export default class About extends Component {
 		)
 	}
 }
+
+const TabContainer = styled.div`
+	padding: 1.5em 0 0 1.5em;
+	width: 100%;
+	white-space: pre-wrap;
+`
 
 const AboutContainer = styled.div`
 	background-color: ${({ theme }) => theme.colors.black};
