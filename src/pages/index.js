@@ -13,9 +13,9 @@ import ResetCSS from 'components/atoms/reset-css'
 // import arrowImg from '../images/arrow.svg'
 
 import BasicTemplate from 'components/templates/basic-template'
+import { Heading } from 'theme-ui'
 
 const CookieOverlay = Loadable(() => import('components/molecules/cookie-overlay'))
-const NavbarDrawer = Loadable(() => import('components/organisms/navbar-drawer'))
 
 // export default LoadableBuyButton
 
@@ -43,30 +43,87 @@ export default class IndexPage extends React.Component {
 
 				<BasicTemplate>
 					<SecondSection>
-						<Wrapper>
-							<Stats>
-								<li>
-									<strong>43</strong>
-									<span>Youtube View</span>
-								</li>
-								<li>
-									<strong>50+</strong>
-									<span>Students</span>
-								</li>
-								<li>
-									<strong>1</strong>
-									<span>Course</span>
-								</li>
-								<li>
-									<strong>10</strong>
-									<span>Video tutorials</span>
-								</li>
-								<li>
-									<strong>4</strong>
-									<span>Countries</span>
-								</li>
-							</Stats>
-						</Wrapper>
+						<div
+							css={theme => css`
+								position: relative;
+								background-color: ${theme.colors.statsBanner};
+							`}
+						>
+							<div
+								css={theme => css`
+									margin-left: auto;
+									margin-right: auto;
+									left: 0;
+									right: 0;
+									top: 40%;
+									position: absolute;
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									width: 220px;
+									height: 60px;
+									background-color: ${theme.colors.primary};
+									color: ${theme.colors.dark100};
+									z-index: 1;
+									border-radius: 25px;
+
+									@media (min-width: 768px) {
+										top: 30%;
+									}
+								`}
+							>
+								<Heading
+									css={css`
+										text-transform: uppercase;
+									`}
+									as="h4"
+								>
+									Stats coming soon
+								</Heading>
+							</div>
+							<Wrapper
+								css={css`
+									position: relative;
+									-webkit-filter: blur(3px);
+									-moz-filter: blur(3px);
+									-o-filter: blur(3px);
+									-ms-filter: blur(3px);
+									filter: blur(3px);
+									transition: all 300ms ease-in;
+									&:hover {
+										-webkit-filter: blur(8px);
+										-moz-filter: blur(8px);
+										-o-filter: blur(8px);
+										-ms-filter: blur(8px);
+										filter: blur(8px);
+										transition: all 300ms ease-in;
+									}
+								`}
+							>
+								<Stats>
+									<li>
+										<strong>43</strong>
+										<span>Youtube View</span>
+									</li>
+									<li>
+										<strong>50+</strong>
+										<span>Students</span>
+									</li>
+									<li>
+										<strong>1</strong>
+										<span>Course</span>
+									</li>
+									<li>
+										<strong>10</strong>
+										<span>Video tutorials</span>
+									</li>
+									<li>
+										<strong>4</strong>
+										<span>Countries</span>
+									</li>
+								</Stats>
+							</Wrapper>
+						</div>
 						<Wrapper>
 							<h2
 								css={css`
