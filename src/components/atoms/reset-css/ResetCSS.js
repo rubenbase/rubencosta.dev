@@ -9,7 +9,8 @@ function ResetCSS() {
 				styles={{
 					html: {
 						MozTextSizeAdjust: '100%',
-						WebkitTextSizeAdjust: '100%'
+						WebkitTextSizeAdjust: '100%',
+						scrollBehavior: 'smooth'
 					},
 					body: {
 						// backgroundColor: 'white',
