@@ -15,7 +15,7 @@ function navbarIsOpenReducer(state, action) {
 }
 
 function NavbarIsOpenProvider({ children }) {
-	const [state, dispatch] = React.useReducer(navbarIsOpenReducer, { isOpen: true })
+	const [state, dispatch] = React.useReducer(navbarIsOpenReducer, { isOpen: false })
 
 	return (
 		<NavbarIsOpenStateContext.Provider value={state}>
