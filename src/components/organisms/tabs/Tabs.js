@@ -14,6 +14,12 @@ const ListTabs = styled.ul`
 	overflow-x: scroll;
 	width: 100%;
 	margin: 0;
+	background: ${({ theme }) => theme.colors.companiesListContainer};
+	position: -webkit-sticky;
+	position: sticky;
+	margin: 0;
+	top: 0;
+	z-index: 9;
 
 	@media (min-width: 768px) {
 		display: flex;
@@ -21,9 +27,6 @@ const ListTabs = styled.ul`
 		padding: 1em 0;
 		margin: 0;
 		width: 224px;
-		white-space: normal;
-		white-space: pre-line;
-		white-space: pre-wrapw;
 	}
 `
 
@@ -32,7 +35,7 @@ const TabTitleItem = styled.li`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: #fff;
+	background-color: ${({ theme }) => theme.colors.companiesList};
 	border-radius: 8px;
 	width: 100%;
 	margin-right: 0.5em;
@@ -53,6 +56,10 @@ const TabTitleItem = styled.li`
 const TabAnchorItem = styled.a`
 	color: #000;
 	font-weight: 600;
+	margin-right: 0.5em;
+	@media (min-width: 768px) {
+		margin-right: 0em;
+	}
 `
 
 function TabItem(props) {
@@ -80,15 +87,17 @@ class Tabs extends Component {
 						<>
 							<ListTabs>
 								{value.context.tabs.map((tab, index) => (
-									<TabItem
-										key={index}
-										onClick={value.context.onClick}
-										tab={tab}
-										id={tab.id}
-										isActiveTab={value.context.activeTab.id === tab.id}
-									>
-										<TabAnchorItem>{tab.title}</TabAnchorItem>
-									</TabItem>
+									<TabAnchorItem href="#companiesList">
+										<TabItem
+											key={index}
+											onClick={value.context.onClick}
+											tab={tab}
+											id={tab.id}
+											isActiveTab={value.context.activeTab.id === tab.id}
+										>
+											{tab.title}
+										</TabItem>
+									</TabAnchorItem>
 								))}
 							</ListTabs>
 							{this.props.children}
