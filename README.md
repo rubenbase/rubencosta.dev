@@ -12,3 +12,4 @@ Personal website to centralise everything.
 - Home
 - Blog
 - About
+- Stats
