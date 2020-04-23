@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+
 import styled from '@emotion/styled'
 import { useNavbarIsOpenDispatch } from 'context/navbar-context'
 
@@ -25,10 +26,13 @@ const ToggleButton = styled.button`
 	cursor: pointer;
 	box-sizing: border-box;
 	padding: 0;
+	@media (min-width: 599px) {
+		display: none;
+	}
 `
 
 const ToggleButtonLine = styled.div`
 	width: 30px;
 	height: 2px;
-	background-color: ${({ theme }) => theme.colors.black};
+	background-color: ${({ theme }) => theme.colors.dark100};
 `
