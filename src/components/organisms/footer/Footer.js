@@ -12,7 +12,7 @@ export default function Footer() {
 					<ThemeableFooter>
 						<Row>
 							<Column>
-								<FooterLinksContainer>
+								{/* <FooterLinksContainer>
 									<FooterLinksList>
 										<FooterLink>
 											<UnstyledAnchor to={'/'}>
@@ -34,18 +34,8 @@ export default function Footer() {
 												<Span>Blog</Span>
 											</UnstyledAnchor>
 										</FooterLink>
-										{/* <FooterLink>
-											<UnstyledAnchor to={'/'}>
-												<Span>...</Span>
-											</UnstyledAnchor>
-										</FooterLink>
-										<FooterLink>
-											<UnstyledAnchor to={'/'}>
-												<Span>...</Span>
-											</UnstyledAnchor>
-										</FooterLink> */}
 									</FooterLinksList>
-								</FooterLinksContainer>
+								</FooterLinksContainer> */}
 							</Column>
 							<Column>
 								<FooterLinksContainer>
