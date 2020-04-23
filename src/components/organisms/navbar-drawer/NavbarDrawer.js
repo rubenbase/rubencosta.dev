@@ -1,292 +1,100 @@
 import React from 'react'
-import Portal from 'components/atoms/portal'
-import styled from '@emotion/styled'
+import ReactDOM from 'react-dom'
+import { Link } from 'gatsby'
+import { Logo } from 'components/molecules/navbar/Navbar'
 import { css } from '@emotion/core'
-import RcDrawer from 'rc-drawer'
+import styled from '@emotion/styled'
+import { FaLinkedin, FaGithub } from 'react-icons/fa'
+import NavbarToggleButton from 'components/atoms/navbar-toggle-button'
 
-export default class NavbarDrawer extends React.Component {
-	parentDrawer = null
-	destroyClose = false
-
+class NavbarDrawer extends React.Component {
 	state = {
-		push: false
+		open: this.props.isOpen
 	}
 
-	componentDidMount() {
-		const { visible } = this.props
-		if (visible && this.parentDrawer) {
-			this.parentDrawer.push()
-		}
-	}
-
-	componentDidUpdate(preProps) {
-		const { visible } = this.props
-		if (preProps.visible !== visible && this.parentDrawer) {
-			if (visible) {
-				this.parentDrawer.push()
-			} else {
-				this.parentDrawer.pull()
-			}
-		}
-	}
-
-	componentWillUnmount() {
-		if (this.parentDrawer) {
-			this.parentDrawer.pull()
-			this.parentDrawer = null
-		}
-	}
-
-	push = () => {
+	toggle = () => {
 		this.setState({
-			push: true
+			open: !this.state.open
 		})
 	}
 
-	pull = () => {
+	handleClick = () => {
 		this.setState({
-			push: false
+			open: !this.state.open
 		})
-	}
-
-	onDestroyTransitionEnd = () => {
-		const isDestroyOnClose = this.getDestroyOnClose()
-		if (!isDestroyOnClose) {
-			return
-		}
-		if (!this.props.visible) {
-			this.destroyClose = true
-			this.forceUpdate()
-		}
-	}
-
-	getDestroyOnClose = () => this.props.destroyOnClose && !this.props.visible
-
-	renderHeader() {
-		const { title, prefixCls, closable, headerStyle } = this.props
-		if (!title && !closable) {
-			return null
-		}
-
-		return (
-			<div style={headerStyle}>
-				{title && <div>{title}</div>}
-				{closable && this.renderCloseIcon()}
-			</div>
-		)
-	}
-
-	renderFooter() {
-		const { footer, footerStyle, prefixCls } = this.props
-		if (!footer) {
-			return null
-		}
-
-		return <div>{footer}</div>
-	}
-
-	renderCloseIcon() {
-		const { closable, prefixCls, onClose } = this.props
-		return (
-			closable && (
-				// eslint-disable-next-line react/button-has-type
-				<button onClick={onClose} aria-label="Close" className={`${prefixCls}-close`}>
-					<span>close</span>
-				</button>
-			)
-		)
-	}
-
-	renderBody = () => {
-		const { bodyStyle, drawerStyle, prefixCls, visible } = this.props
-		if (this.destroyClose && !visible) {
-			return null
-		}
-		this.destroyClose = false
-
-		const containerStyle = {}
-
-		const isDestroyOnClose = this.getDestroyOnClose()
-
-		if (isDestroyOnClose) {
-			// Increase the opacity transition, delete children after closing.
-			containerStyle.opacity = 0
-			containerStyle.transition = 'opacity .3s'
-		}
-
-		return (
-			<div
-				style={{
-					...containerStyle,
-					...drawerStyle
-				}}
-				onTransitionEnd={this.onDestroyTransitionEnd}
-			>
-				{this.renderHeader()}
-				<div style={bodyStyle}>{this.props.children}</div>
-				{this.renderFooter()}
-			</div>
-		)
-	}
-
-	// render Provider for Multi-level drawer
-	renderProvider = value => {
-		const { prefixCls, placement, className, width, height, mask, direction, ...rest } = this.props
-		const haveMask = mask ? '' : 'no-mask'
-		this.parentDrawer = value
-		const offsetStyle = {}
-		if (placement === 'left' || placement === 'right') {
-			offsetStyle.width = width
-		} else {
-			offsetStyle.height = height
-		}
-		// const drawerClassName = classNames(className, haveMask, {
-		// 	[`${prefixCls}-rtl`]: direction === 'rtl'
-		// })
-		return (
-			// <DrawerContext.Provider value={this}>
-			// <RcDrawer
-			// 	handler={false}
-			// 	// {...omit(rest, [
-			// 	// 	'zIndex',
-			// 	// 	'style',
-			// 	// 	'closable',
-			// 	// 	'destroyOnClose',
-			// 	// 	'drawerStyle',
-			// 	// 	'headerStyle',
-			// 	// 	'bodyStyle',
-			// 	// 	'footerStyle',
-			// 	// 	'footer',
-			// 	// 	'locale',
-			// 	// 	'title',
-			// 	// 	'push',
-			// 	// 	'visible',
-			// 	// 	'getPopupContainer',
-			// 	// 	'rootPrefixCls',
-			// 	// 	'getPrefixCls',
-			// 	// 	'renderEmpty',
-			// 	// 	'csp',
-			// 	// 	'pageHeader',
-			// 	// 	'autoInsertSpaceInButton'
-			// 	// ])}
-			// 	// {...offsetStyle}
-			// 	prefixCls={prefixCls}
-			// 	// open={this.props.visible}
-			// 	// getContainer={document.getElementById('navbar-overlay')}
-			// 	// showMask={mask}
-			// 	// placement={placement}
-			// 	// style={this.getRcDrawerStyle()}
-			// 	// className={drawerClassName}
-			// >
-			// 	{this.renderBody()}
-			// 	{/* <Navbar>
-			// 		<ul css={{ margin: '0' }}>
-			// 			<li>
-			// 				<a>Example1</a>
-			// 			</li>
-			// 			<li>
-			// 				<a>Example2</a>
-			// 			</li>
-			// 		</ul>
-			// 	</Navbar> */}
-			// 	{/* </DrawerContext.Provider> */}
-			// </RcDrawer>
-			<div className="sidebar">
-				<nav className="menu">
-					<li>
-						<a href="#">Home</a>
-					</li>
-					<li>
-						<a href="#">About</a>
-					</li>
-					<li>
-						<a href="#">Services</a>
-					</li>
-					<li>
-						<a href="#">Pricing</a>
-					</li>
-					<li>
-						<a href="#">Contact</a>
-					</li>
-					<li>
-						<a href="#">Blog</a>
-					</li>
-				</nav>
-			</div>
-		)
 	}
 
 	render() {
-		return (
-			<Portal name="navbar-overlay">
-				<div>
-					{/* <DrawerContext.Consumer> */}
-					{/* {this.renderProvider()} */}
-					{/* </DrawerContext.Consumer> */}
-				</div>
-			</Portal>
+		const { isOpen } = this.props
+		const modalMarkup = (
+			<ModalBackground open={isOpen}>
+				<ModalHeader>
+					<Logo to="/">rubencosta</Logo>
+					<NavbarToggleButton />
+				</ModalHeader>
+				<ModalContent>
+					<ModalList>{this.props.children}</ModalList>
+				</ModalContent>
+				<ModalFooter>
+					{/* <FaGithub size={32} /> */}
+					<a
+						href="https://www.linkedin.com/in/rubencostam"
+						target="_blank"
+						css={theme => css`
+							color: ${theme.colors.dark100};
+							cursor: pointer;
+							text-decoration: underline;
+						`}
+					>
+						<FaLinkedin size={32} />
+					</a>
+				</ModalFooter>
+			</ModalBackground>
 		)
+
+		return ReactDOM.createPortal(modalMarkup, document.body)
 	}
 }
 
-const Navbar = styled.nav`
-	/* position: absolute; */
-	position: fixed;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	top: 0;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 12px 24px;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
+const ModalFooter = styled.ul`
+	margin: 0;
+	height: 68px;
 	display: flex;
-	z-index: 10;
-	max-width: 80%;
-	width: 500px;
-	left: 0;
-	background-color: rgb(255, 255, 255);
-	color: red;
-	padding: 12px 12px 12px 24px;
-	border-radius: 0 8px 8px 0;
+	flex-direction: row-reverse;
+	align-items: center;
 `
-
-{
-	/* <SideMenu>
-	<SideMenuItem>
-	<i></i> Example 1
-	</SideMenuItem>
-	<SideMenuItem>
-	<i></i> Example 2
-	</SideMenuItem>
-	<SideMenuItem>
-	<i></i> Example 3
-	</SideMenuItem>
-	
-	<Separator />
-	
-	<SideMenuItem>
-	<i></i> Example 4
-	</SideMenuItem>
-	<SideMenuItem>
-	<i></i> Example 5
-	</SideMenuItem>
-	<SideMenuItem>
-	<i></i> Example 6
-	</SideMenuItem>
-	
-	<Separator />
-	
-	<SideMenuItem>
-	<i></i> Example 7
-	</SideMenuItem>
-	<SideMenuItem>
-	<i></i> Example 8
-	</SideMenuItem>
-	<SideMenuItem>
-	<i></i> Example 9
-	</SideMenuItem>
-	</SideMenu> */
-}
+const ModalList = styled.ul`
+	margin: 0;
+`
+const ModalContent = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding-top: 3em;
+	height: 100%;
+`
+const ModalHeader = styled.div`
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+`
+const ModalBackground = styled.div`
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	z-index: 10;
+	background-color: ${({ theme }) => theme.colors.light1};
+	color: ${({ theme }) => theme.colors.dark100};
+	padding: 1em;
+	margin: auto;
+	transition: transform 0.3s ease-in-out;
+	${({ open }) => `transform: translateY(${open ? '0' : '100'}%);`}
+`
+export default NavbarDrawer
