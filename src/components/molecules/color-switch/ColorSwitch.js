@@ -8,7 +8,7 @@ const ColorSwitch = () => {
 		<div sx={{ textAlign: 'center' }}>
 			<button
 				onClick={() => {
-					setColorMode(colorMode === 'light' ? 'dark' : 'light')
+					setColorMode(colorMode === 'light' || colorMode === 'default' ? 'dark' : 'light')
 				}}
 				sx={{
 					backgroundColor: '#fff',
