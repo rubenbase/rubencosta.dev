@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
+import { format, formatDistanceStrict } from 'date-fns'
 
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
@@ -14,6 +15,24 @@ import Tabs from 'components/organisms/tabs'
 import { companiesData } from 'data/about.data'
 
 export default class About extends Component {
+	getCompanyDistance(dateEnd, dateInit) {
+		if (!dateEnd) dateEnd = new Date()
+
+		const date = new Date(dateEnd - dateInit)
+		const years = date.getFullYear() - 1970
+		const months = date.getMonth() + 1
+
+		const yrText = years === 1 ? years + ' yr ' : years > 1 ? years + ' yrs ' : ''
+		const moText = months === 1 ? months + ' mo' : months > 1 ? months + ' mos' : ''
+
+		return yrText + moText
+	}
+
+	getCompanyDate(date) {
+		if (!date) return 'Present'
+		return format(date, 'MMM yyyy')
+	}
+
 	render() {
 		return (
 			<>
@@ -194,6 +213,7 @@ export default class About extends Component {
 									My Experience
 								</h2>
 								<div
+									id="companiesList"
 									css={css`
 										display: flex;
 										align-items: flex-start;
@@ -211,68 +231,93 @@ export default class About extends Component {
 									>
 										{companiesData.map(company => (
 											<Tabs.Tab id={company.id} title={company.title}>
-												<TabContainer>
-													<Box>
-														<Heading as="h3">{company.position}</Heading>
-													</Box>
-													<Flex pt={2}>
-														<Text>
-															Sep 2019 — Present •{' '}
-															<span
-																css={css`
-																	opacity: 0.7;
-																`}
-															>
-																9 months
-															</span>
-														</Text>
-													</Flex>
-													<Box>
-														<Text>{company.location}</Text>
-													</Box>
-													<Box pt={4}>
-														<Text>{company.description}</Text>
-													</Box>
-												</TabContainer>
-											</Tabs.Tab>
-										))}
-										<Tabs.Tab id="tab1" title="Vodafone">
-											<TabContainer>
-												<Box>
-													<Heading as="h3">Software Engineer</Heading>
-												</Box>
-												<Flex pt={2}>
-													<Text>
-														Sep 2019 — Present •{' '}
-														<span
+												{company.positions.length > 1 ? (
+													<>
+														<div
 															css={css`
-																opacity: 0.7;
+																width: 100%;
+
+																/* padding-left: 1em; */
+																@media (min-width: 768px) {
+																	padding-left: 1em;
+																}
 															`}
 														>
-															9 months
-														</span>
-													</Text>
-												</Flex>
-												<Box>
-													<Text>London</Text>
-												</Box>
-												<Box pt={4}>
-													<Text>
-														Responsibilities: SCRUM, SASS, React, Typescript, Nodejs, Jest, Enzyme,
-														Devops, AWS
-													</Text>
-												</Box>
-											</TabContainer>
-										</Tabs.Tab>
-										<Tabs.Tab id="tab2" title="Hack a BOS">
-											<TabContainer>Hack a BOS</TabContainer>
-										</Tabs.Tab>
-										<Tabs.Tab id="tab3" title="Blue Ocean Start">
-											<TabContainer>Blue Ocean Start</TabContainer>
-										</Tabs.Tab>
-										<Tabs.Tab id="tab4" title="Domesting">
-											<TabContainer>Domesting</TabContainer>
-										</Tabs.Tab>
+															{company.positions.map(position => (
+																<TabMultipleContainer>
+																	<Bullet />
+																	<Box>
+																		<Heading as="h3">{position.position}</Heading>
+																	</Box>
+																	<Flex pt={2}>
+																		<Text>
+																			{this.getCompanyDate(position.dateInit)} —{' '}
+																			{this.getCompanyDate(position.dateFinish)} •{' '}
+																			<span
+																				css={css`
+																					opacity: 0.7;
+																				`}
+																			>
+																				{this.getCompanyDistance(
+																					position.dateFinish,
+																					position.dateInit
+																				)}
+																			</span>
+																		</Text>
+																	</Flex>
+																	<Box>
+																		<Text>{position.location}</Text>
+																	</Box>
+																	<Box pt={4}>
+																		<Text>{position.description}</Text>
+																	</Box>
+																</TabMultipleContainer>
+															))}
+														</div>
+													</>
+												) : (
+													<div
+														css={css`
+															width: 100%;
+
+															/* padding-left: 1em; */
+															@media (min-width: 768px) {
+																padding-left: 1em;
+															}
+														`}
+													>
+														<TabContainer>
+															{/* <Bullet></Bullet> */}
+															<Box>
+																<Heading as="h3">{company.positions[0].position}</Heading>
+															</Box>
+															<Flex pt={2}>
+																<Text>
+																	{this.getCompanyDate(company.positions[0].dateInit)} —{' '}
+																	{this.getCompanyDate(company.positions[0].dateFinish)} •{' '}
+																	<span
+																		css={css`
+																			opacity: 0.7;
+																		`}
+																	>
+																		{this.getCompanyDistance(
+																			company.positions[0].dateFinish,
+																			company.positions[0].dateInit
+																		)}
+																	</span>
+																</Text>
+															</Flex>
+															<Box>
+																<Text>{company.positions[0].location}</Text>
+															</Box>
+															<Box pt={4}>
+																<Text>{company.positions[0].description}</Text>
+															</Box>
+														</TabContainer>
+													</div>
+												)}
+											</Tabs.Tab>
+										))}
 									</Tabs>
 								</div>
 							</Section>
@@ -284,10 +329,50 @@ export default class About extends Component {
 	}
 }
 
+const Bullet = styled.span`
+	top: 34px;
+
+	margin-left: -21px;
+
+	position: absolute;
+	display: block;
+	border: 2px solid #bababa;
+	border-radius: 50%;
+	height: 8px;
+	width: 8px;
+	background-color: white;
+`
+
 const TabContainer = styled.div`
+	position: relative;
 	padding: 1.5em 0 0 1.5em;
 	width: 100%;
 	white-space: pre-wrap;
+`
+
+const TabMultipleContainer = styled.div`
+	position: relative;
+	padding: 1.5em 0 3em 1.5em;
+	width: 100%;
+	white-space: pre-wrap;
+
+	&::before {
+		content: '';
+		position: absolute;
+		height: calc(100% - 52px);
+		min-height: calc(60px - 22px);
+		top: 65px;
+		left: 6px;
+		width: 1px;
+		background-color: #bababa;
+		opacity: 0.5;
+	}
+
+	&:last-child {
+		&::before {
+			opacity: 0;
+		}
+	}
 `
 
 const AboutContainer = styled.div`
