@@ -13,3 +13,10 @@ Personal website to centralise everything.
 - Blog
 - About
 - Stats
+
+#### APP Pages
+
+- Login
+- Register
+- Dashboard
+
