@@ -13,6 +13,7 @@ Personal website to centralise everything.
 - Blog
 - About
 - Stats
+- Projects
 
 #### APP Pages
 
