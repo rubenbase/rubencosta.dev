@@ -40,6 +40,7 @@ class NavbarDrawer extends React.Component {
 					<a
 						href="https://www.linkedin.com/in/rubencostam"
 						target="_blank"
+						rel="noreferrer"
 						css={theme => css`
 							color: ${theme.colors.dark100};
 							cursor: pointer;

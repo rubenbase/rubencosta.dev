@@ -29,6 +29,7 @@ export default function Navbar() {
 						`}
 						href="https://github.com/rubenbase"
 						target="_blank"
+						rel="noreferrer"
 					>
 						Github
 					</a>
@@ -53,6 +54,7 @@ export default function Navbar() {
 						`}
 						href="https://github.com/rubenbase"
 						target="_blank"
+						rel="noreferrer"
 					>
 						Github
 					</a>

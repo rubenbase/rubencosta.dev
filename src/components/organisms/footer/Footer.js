@@ -44,6 +44,7 @@ export default function Footer() {
 											<a
 												href="https://www.linkedin.com/in/rubencostam"
 												target="_blank"
+												rel="noreferrer"
 												css={css`
 													color: white;
 													cursor: pointer;
